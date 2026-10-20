@@ -15,7 +15,7 @@
 
 <!-- persistent chrome (outside the scaled canvas) -->
 <header class="chrome-top">
-  <div class="brand mono"><span class="dot"></span>AUD <i>/</i> AI FESTIVAL 2026</div>
+  <div class="brand"><img class="lg-daif" src="../assets/img/daif.svg" alt="Dubai AI Festival"><i class="lg-sep"></i><img class="lg-aud" src="../assets/img/aud-logo-on-dark.png" alt="American University in Dubai"></div>
   <div class="tracks mono" aria-hidden="true">
     <span class="t t-ug">UNDERGRADUATE</span><span class="t-sep"></span><span class="t t-g">GRADUATE</span>
   </div>
@@ -23,7 +23,7 @@
 <footer class="chrome-bottom">
   <div class="counter mono"><b id="ix">01</b><span>/</span><span id="total">18</span></div>
   <div class="segments" id="segments"></div>
-  <button class="pause mono" id="pause" type="button" aria-label="Pause auto-play">PAUSE</button>
+  <div class="qr-chip" aria-hidden="true"><span class="mono">SCAN · PLAY THE<br>AI CHALLENGES</span><img src="../assets/img/qr-activities.svg" alt=""></div>
 </footer>
 <div class="wipe" id="wipe"></div>
 
@@ -33,8 +33,9 @@
 <!-- 01 · TITLE -->
 <section class="slide s-title" data-track="x" data-autoslide="11000" data-viz="field">
   <canvas class="field"></canvas>
+  <div class="lockup lockup-xl" data-in><img class="lg-daif" src="../assets/img/daif.svg" alt="Dubai AI Festival"><i class="lg-sep"></i><img class="lg-aud" src="../assets/img/aud-logo-on-dark.png" alt="American University in Dubai, School of Engineering"></div>
   <div class="title-wrap">
-    <div class="kicker mono" data-in>SCHOOL OF ENGINEERING · AMERICAN UNIVERSITY IN DUBAI</div>
+    <div class="kicker mono" data-in><span class="live-dot"></span>AI FESTIVAL 2026 · STUDENT RESEARCH SHOWCASE</div>
     <h1 data-in>Machines that <em>learn</em>,<br>built in Dubai.</h1>
     <p class="sub" data-in>Fifteen AI projects from our undergraduate and graduate students: hospitals, power grids, airlines, forests and the brain.</p>
     <div class="legend mono" data-in>
@@ -65,6 +66,7 @@
 
 <!-- 03 · G · EV MARL -->
 <section class="slide proj" data-track="g" data-viz="ev">
+  <div class="photo" style="--img:url(../assets/img/ev-charging.webp);--pos:center" aria-hidden="true"><span class="credit mono">PHOTO · Ivan Radic · CC BY 2.0 · WIKIMEDIA COMMONS</span></div>
   <div class="meta">
     <div class="tag mono" data-in><i></i>GRADUATE · MSAI PROJECT</div>
     <h2 data-in>Fifty charging stations learn to <em>cooperate</em>.</h2>
@@ -123,6 +125,7 @@
 
 <!-- 05 · G · SURVEILLANCE -->
 <section class="slide proj" data-track="g" data-viz="video">
+  <div class="photo" style="--img:url(../assets/img/cctv-camera.webp);--pos:center 30%" aria-hidden="true"><span class="credit mono">PHOTO · EFF · CC BY 3.0 · WIKIMEDIA COMMONS</span></div>
   <div class="meta">
     <div class="tag mono" data-in><i></i>GRADUATE · MSAI THESIS</div>
     <h2 data-in>Asking questions of <em>hours</em> of CCTV.</h2>
@@ -192,6 +195,7 @@
 
 <!-- 07 · G · PV -->
 <section class="slide proj" data-track="g" data-viz="pv">
+  <div class="photo" style="--img:url(../assets/img/pv-solar.webp);--pos:center 60%" aria-hidden="true"><span class="credit mono">PHOTO · USAF · Public domain · WIKIMEDIA COMMONS</span></div>
   <div class="meta">
     <div class="tag mono" data-in><i></i>GRADUATE · MSAI RESEARCH · PREPRINT</div>
     <h2 data-in>Forecasting solar power by first asking: <em>sunny or cloudy?</em></h2>
@@ -228,6 +232,7 @@
 
 <!-- 08 · UG · CKD -->
 <section class="slide proj flip" data-track="ug" data-viz="ckd">
+  <div class="photo" style="--img:url(../assets/img/ckd-lab.webp);--pos:35% center" aria-hidden="true"><span class="credit mono">PHOTO · U.S. Air Force photo by Airman 1st Class David S. Calcote · Public domain · WIKIMEDIA COMMONS</span></div>
   <div class="meta">
     <div class="tag mono" data-in><i></i>UNDERGRADUATE · RESEARCH PAPER</div>
     <h2 data-in>Screening kidney disease with <em>one number</em> and one formula.</h2>
@@ -240,7 +245,7 @@
     <div class="people mono" data-in>Harihar Rengan · Dr. Vinod Pangracious</div>
   </div>
   <div class="viz viz-ckd">
-    <div class="formula serif">P(c) = σ<span class="paren">(</span>0.991 − 0.214 · e<sup>c(1.532 − c)</sup><span class="paren">)</span></div>
+    <div class="formula display">P(c) = σ<span class="paren">(</span>0.991 − 0.214 · e<sup>c(1.532 − c)</sup><span class="paren">)</span></div>
     <div class="formula-note mono">c = serum creatinine (mg/dL) · symbolic-regression form, Platt-calibrated below</div>
     <svg class="ckd-svg" viewBox="0 0 760 380">
       <g class="axes"></g>
@@ -284,6 +289,7 @@
 
 <!-- 10 · UG · EEG -->
 <section class="slide proj flip" data-track="ug" data-viz="eeg">
+  <div class="photo" style="--img:url(../assets/img/eeg-cap.webp);--pos:center" aria-hidden="true"><span class="credit mono">PHOTO · Laurens R. Krol · CC BY 4.0 · WIKIMEDIA COMMONS</span></div>
   <div class="meta">
     <div class="tag mono" data-in><i></i>UNDERGRADUATE · RESEARCH PAPER</div>
     <h2 data-in>Can EEG tell when your <em>mind wanders</em>?</h2>
@@ -310,6 +316,7 @@
 
 <!-- 11 · G · SHIPMENT -->
 <section class="slide proj" data-track="g" data-viz="ship">
+  <div class="photo" style="--img:url(../assets/img/container-port-jebelali.webp);--pos:center;--b:.34" aria-hidden="true"><span class="credit mono">PHOTO · Imre Solt · CC BY-SA 3.0 · WIKIMEDIA COMMONS</span></div>
   <div class="meta">
     <div class="tag mono" data-in><i></i>GRADUATE · MSAI PROJECT</div>
     <h2 data-in>Agents plan the shipments. <em>The buyer decides.</em></h2>
@@ -342,6 +349,7 @@
 
 <!-- 12 · UG · DYSLEXIA -->
 <section class="slide proj flip" data-track="ug" data-viz="gaze">
+  <div class="photo" style="--img:url(../assets/img/eye-tracker.webp);--pos:40% center" aria-hidden="true"><span class="credit mono">PHOTO · Jan Bambach · CC BY-SA 3.0 · WIKIMEDIA COMMONS</span></div>
   <div class="meta">
     <div class="tag mono" data-in><i></i>UNDERGRADUATE · RESEARCH PAPER</div>
     <h2 data-in>Spotting dyslexia in <em>how eyes move</em> across a page.</h2>
@@ -395,6 +403,7 @@
 
 <!-- 14 · UG · HEART -->
 <section class="slide proj flip" data-track="ug" data-viz="heart">
+  <div class="photo" style="--img:url(../assets/img/ecg-echo.webp);--pos:center;--b:.24" aria-hidden="true"><span class="credit mono">PHOTO · Petty Officer 1st Class James Stenberg · Public domain · WIKIMEDIA COMMONS</span></div>
   <div class="meta">
     <div class="tag mono" data-in><i></i>UNDERGRADUATE · RESEARCH PAPER</div>
     <h2 data-in>Flagging heart-failure risk <em>early</em>, and explaining why.</h2>
@@ -435,11 +444,13 @@
       <div class="f" data-f="2"><span class="mono">JUSTIFICATION</span><p><i style="--w:20%"></i><i style="--w:10%"></i><i style="--w:34%"></i><i style="--w:12%"></i></p><em class="mono">src · p.17 ¶1</em></div>
       <div class="rule mono">AI extracts · physicians verify · committee decides</div>
     </div>
+    <figure class="snap snap-skmc" style="--rot:2.5deg"><img src="../assets/img/skmc.webp" alt="Sheikh Khalifa Medical City, Abu Dhabi"><figcaption class="mono">SHEIKH KHALIFA MEDICAL CITY · PARTNER</figcaption></figure>
   </div>
 </section>
 
 <!-- 16 · UG · CARBON -->
 <section class="slide proj flip" data-track="ug" data-viz="forest">
+  <div class="photo" style="--img:url(../assets/img/mangroves-uae.webp);--pos:center 70%" aria-hidden="true"><span class="credit mono">PHOTO · Sendamuse · CC BY-SA 4.0 · WIKIMEDIA COMMONS</span></div>
   <div class="meta">
     <div class="tag mono" data-in><i></i>UNDERGRADUATE · RESEARCH PAPER &amp; POSTER</div>
     <h2 data-in>Counting carbon <em>tree by tree</em>.</h2>
@@ -459,6 +470,7 @@
 
 <!-- 17 · G · SKYWARDS -->
 <section class="slide proj" data-track="g" data-viz="agents">
+  <div class="photo" style="--img:url(../assets/img/dxb-aircraft.webp);--pos:70% center" aria-hidden="true"><span class="credit mono">PHOTO · Andy Mabbett · CC BY-SA 4.0 · WIKIMEDIA COMMONS</span></div>
   <div class="meta">
     <div class="tag mono" data-in><i></i>GRADUATE · MSAI PROJECT</div>
     <h2 data-in>Four AI agents help you spend <em>miles you forgot you had</em>.</h2>
@@ -480,13 +492,14 @@
 <!-- 18 · CLOSE -->
 <section class="slide s-close" data-track="x" data-autoslide="14000" data-viz="close">
   <div class="close-l">
+    <div class="lockup" data-in><img class="lg-daif" src="../assets/img/daif.svg" alt="Dubai AI Festival"><i class="lg-sep"></i><img class="lg-aud" src="../assets/img/aud-logo-on-dark.png" alt="American University in Dubai, School of Engineering"></div>
     <div class="kicker mono" data-in>FALL 2026 · SCHOOL OF ENGINEERING</div>
     <h1 data-in>The next project<br>on this screen <em>could be yours</em>.</h1>
     <div class="paths">
       <div class="p p-ug" data-in><span class="mono">UNDERGRADUATE</span><b>BS Computer Engineering</b><p>Research with faculty from your first years: hardware, medical AI, climate.</p></div>
       <div class="p p-g" data-in><span class="mono">GRADUATE</span><b>MSc Artificial Intelligence</b><p>Machine learning · deep learning · generative AI · automation &amp; IoT · industrial case studies.</p></div>
     </div>
-    <div class="scan" data-in>
+    <div class="scan-cta" data-in>
       <div class="qr ticks"><img src="../assets/img/qr-activities.svg" alt="QR code linking to the AUD AI challenges page"><i class="qr-beam"></i></div>
       <div class="scan-t">
         <span class="mono">SCAN TO PLAY · ON YOUR PHONE</span>

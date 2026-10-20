@@ -127,7 +127,7 @@
       const hubG = svg("g", { transform: `translate(${hub.x} ${hub.y})` }, root);
       const ring = svg("circle", { r: 0, fill: "none", stroke: "#8fd8ff", "stroke-width": 1.5, opacity: 0 }, hubG);
       svg("polygon", { points: "0,-16 14,-8 14,8 0,16 -14,8 -14,-8", fill: "#07090d", stroke: "#8fd8ff", "stroke-width": 1.5 }, hubG);
-      const lab = svg("text", { y: 34, "text-anchor": "middle", fill: "#8fd8ff", "font-family": "Geist Mono", "font-size": 11, "letter-spacing": "1.5" }, hubG);
+      const lab = svg("text", { y: 34, "text-anchor": "middle", fill: "#8fd8ff", "font-family": "IBM Plex Mono", "font-size": 11, "letter-spacing": "1.5" }, hubG);
       lab.textContent = "SHARED POLICY";
       Object.assign(root, { _pts: pts, _cars: cars, _ring: ring, _links: gL });
       root.dataset.built = 1;
@@ -280,7 +280,7 @@
       svg("text", { x: x0 + W, y: Y(0.5) - 8, "text-anchor": "end" }, ax).textContent = "DECISION 0.5";
       const band = $(".band", root);
       Object.entries({ x: X(0.03), width: X(1.5) - X(0.03), y: y0, height: H }).forEach(([k, v]) => band.setAttribute(k, v));
-      svg("text", { x: X(0.77), y: y0 + 16, "text-anchor": "middle", fill: "#d7ff5a", "font-family": "Geist Mono", "font-size": 11 }, root).textContent = "HEALTHY 0.03–1.50";
+      svg("text", { x: X(0.77), y: y0 + 16, "text-anchor": "middle", fill: "#d7ff5a", "font-family": "IBM Plex Mono", "font-size": 11 }, root).textContent = "HEALTHY 0.03–1.50";
       let d = "";
       for (let i = 0; i <= 250; i++) { const c = (i / 250) * 5; d += `${i ? "L" : "M"}${X(c).toFixed(1)} ${Y(P(c)).toFixed(1)}`; }
       $(".curve", root).setAttribute("d", d);
@@ -373,7 +373,7 @@
       // shaded mind-wandering window drifting left
       const mwStart = ((7 - (t % 7)) / 7) * (w + 300) - 150;
       ctx.fillStyle = "rgba(255,106,61,.07)"; ctx.fillRect(mwStart, 0, 220, h);
-      ctx.fillStyle = "rgba(255,106,61,.85)"; ctx.font = "10px Geist Mono"; ctx.fillText("MIND-WANDERING", mwStart + 8, h - 8);
+      ctx.fillStyle = "rgba(255,106,61,.85)"; ctx.font = "10px 'IBM Plex Mono'"; ctx.fillText("MIND-WANDERING", mwStart + 8, h - 8);
       for (let k = 0; k < ch; k++) {
         const y0 = lh * (k + 0.5);
         ctx.beginPath();
@@ -386,7 +386,7 @@
         }
         ctx.strokeStyle = k % 2 ? "rgba(236,232,223,.55)" : "rgba(236,232,223,.8)";
         ctx.lineWidth = 1; ctx.stroke();
-        ctx.fillStyle = "#7d828c"; ctx.font = "10px Geist Mono";
+        ctx.fillStyle = "#7d828c"; ctx.font = "10px 'IBM Plex Mono'";
         ctx.fillText(["Fp1", "Fp2", "F3", "F4", "C3", "C4", "O1", "O2"][k], 4, y0 - lh * 0.3);
       }
       pop.classList.toggle("show", t % 7 > 3.2 && t % 7 < 5.6);
@@ -653,6 +653,38 @@
   const slides = $$(".reveal .slides > section");
   slides.forEach((s) => $$("[data-in]", s).forEach((e, i) => e.style.setProperty("--i", i)));
 
+  // headlines rise word by word from behind a mask
+  const splitWords = (el) => {
+    let k = 0;
+    const walk = (node) => [...node.childNodes].forEach((c) => {
+      if (c.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        c.textContent.split(/(\s+)/).forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+          const w = document.createElement("span"); w.className = "hw";
+          const inner = document.createElement("span"); inner.textContent = part; inner.style.setProperty("--k", k++);
+          w.appendChild(inner); frag.appendChild(w);
+        });
+        c.replaceWith(frag);
+      } else if (c.nodeType === 1 && c.tagName !== "BR") walk(c);
+    });
+    walk(el);
+    // keep trailing punctuation on the same line as the emphasised word before it
+    $$(".hw", el).forEach((w) => {
+      const prev = w.previousSibling;
+      if (/^[.,;:!?…]+$/.test(w.textContent) && prev && prev.nodeType === 1 && !prev.classList.contains("hw")) {
+        const host = prev.querySelector(".hw:last-of-type > span") || prev;
+        const pn = document.createElement("span"); pn.className = "pn"; pn.textContent = w.textContent;
+        host.appendChild(pn); w.remove();
+      }
+    });
+  };
+  slides.forEach((s) => $$("h1[data-in], h2[data-in]", s).forEach((h) => {
+    h.style.setProperty("--hd", (+getComputedStyle(h).getPropertyValue("--i") || 0) * 85 + 250 + "ms");
+    h.removeAttribute("data-in"); h.classList.add("words"); splitWords(h);
+  }));
+
   const seg = $("#segments");
   slides.forEach((s) => {
     const i = document.createElement("i");
@@ -668,6 +700,7 @@
     current = new Run();
     const idx = slides.indexOf(s);
     document.body.dataset.track = s.dataset.track;
+    document.body.dataset.viz = s.dataset.viz;
     $("#ix").textContent = String(idx + 1).padStart(2, "0");
     $$("i", seg).forEach((el, i) => {
       el.classList.toggle("done", i < idx);
@@ -691,9 +724,8 @@
   }).then(() => enter(Reveal.getCurrentSlide()));
 
   Reveal.on("slidechanged", (e) => enter(e.currentSlide));
-  const setPaused = (p) => { document.body.classList.toggle("paused", p); $("#pause").textContent = p ? "PLAY" : "PAUSE"; };
+  const setPaused = (p) => document.body.classList.toggle("paused", p);
   Reveal.on("autoslidepaused", () => setPaused(true));
   Reveal.on("autoslideresumed", () => setPaused(false));
-  $("#pause").addEventListener("click", () => Reveal.toggleAutoSlide());
   window.addEventListener("resize", () => Reveal.layout());
 })();
