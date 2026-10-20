@@ -6,7 +6,9 @@
     "serve": "python3 -m http.server 8765 --bind 127.0.0.1 --directory site",
     "vendor": "cp node_modules/reveal.js/dist/{reveal.js,reveal.css,reset.css} site/vendor/reveal/",
     "test": "node tests/test-activities.mjs http://127.0.0.1:8765 tests/shots && node tests/check-autoplay.mjs http://127.0.0.1:8765",
-    "shoot": "node tests/shoot-deck.mjs http://127.0.0.1:8765 tests/shots"
+    "shoot": "node tests/shoot-deck.mjs http://127.0.0.1:8765 tests/shots",
+    "video": "node scripts/record-video.mjs",
+    "video:usb": "node scripts/record-video.mjs --loops 3 --out video/aud-ai-festival-showcase-x3.mp4"
   },
   "dependencies": {
     "@fontsource-variable/archivo": "^5.2.8",

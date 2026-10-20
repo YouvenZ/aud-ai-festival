@@ -40,3 +40,13 @@ Background photos from Wikimedia Commons:
 - `ev-charging.webp`: Ivan Radic, CC BY 2.0, <https://commons.wikimedia.org/wiki/File:Electric_car_charging_(9213).jpg>
 
 Fonts: Archivo, IBM Plex Sans and IBM Plex Mono (SIL Open Font License), self-hosted via Fontsource.
+
+## Presentation video (USB / TV)
+
+`npm run video` renders the deck to `video/aud-ai-festival-showcase.mp4`: 1920×1080, 30 fps, H.264 with a silent audio track, so it plays on TVs, laptops and projectors. `npm run video:usb` writes a version where the deck plays three times in a row, for TVs that don't loop.
+
+The page runs on a virtual clock (timers, animation frames and CSS animations all advance exactly one frame at a time), so the video is smooth even on a slow machine. A full render takes about 15 minutes. Options: `--fps 60`, `--size 3840x2160`, `--loops N`, `--seconds N` (short test), `--out path.mp4`.
+
+Automatic: `.github/workflows/video.yml` re-renders the video whenever the slides change and publishes it at
+<https://github.com/YouvenZ/aud-ai-festival/releases/download/presentation-video/aud-ai-festival-showcase.mp4>
+(it can also be started by hand from the Actions tab, with a loop count).
