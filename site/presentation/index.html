@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI at AUD</title>
+<meta name="description" content="Undergraduate and graduate AI research at the American University in Dubai — AI Festival 2026.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2307090d'/%3E%3Ccircle cx='12' cy='16' r='5' fill='%23ff6a3d'/%3E%3Ccircle cx='21' cy='16' r='5' fill='none' stroke='%238fd8ff' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../vendor/reveal/reset.css">
+<link rel="stylesheet" href="../vendor/reveal/reveal.css">
+<link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="deck.css">
+</head>
+<body class="blueprint grain">
+
+<!-- persistent chrome (outside the scaled canvas) -->
+<header class="chrome-top">
+  <div class="brand mono"><span class="dot"></span>AUD <i>/</i> AI FESTIVAL 2026</div>
+  <div class="tracks mono" aria-hidden="true">
+    <span class="t t-ug">UNDERGRADUATE</span><span class="t-sep"></span><span class="t t-g">GRADUATE</span>
+  </div>
+</header>
+<footer class="chrome-bottom">
+  <div class="counter mono"><b id="ix">01</b><span>/</span><span id="total">18</span></div>
+  <div class="segments" id="segments"></div>
+  <button class="pause mono" id="pause" type="button" aria-label="Pause auto-play">PAUSE</button>
+</footer>
+<div class="wipe" id="wipe"></div>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- 01 · TITLE -->
+<section class="slide s-title" data-track="x" data-autoslide="11000" data-viz="field">
+  <canvas class="field"></canvas>
+  <div class="title-wrap">
+    <div class="kicker mono" data-in>SCHOOL OF ENGINEERING · AMERICAN UNIVERSITY IN DUBAI</div>
+    <h1 data-in>Machines that <em>learn</em>,<br>built in Dubai.</h1>
+    <p class="sub" data-in>Fifteen AI projects from our undergraduate and graduate students: hospitals, power grids, airlines, forests and the brain.</p>
+    <div class="legend mono" data-in>
+      <span><i class="sw sw-ug"></i>Undergraduate · BS Computer Engineering</span>
+      <span><i class="sw sw-g"></i>Graduate · MSc Artificial Intelligence</span>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · TWO TRACKS -->
+<section class="slide s-tracks" data-track="x" data-autoslide="13000" data-viz="tracks">
+  <div class="half half-ug">
+    <div class="tag mono" data-in>TRACK A · UNDERGRADUATE</div>
+    <div class="big" data-in><b data-count="7">0</b><span>research papers<br>with faculty</span></div>
+    <h3 data-in>Bachelor of Science<br><em>in Computer Engineering</em></h3>
+    <p data-in>Undergraduates co-author peer-review submissions with faculty, from MRI and EEG analysis to FPGA accelerators and climate tools.</p>
+    <ul class="chips mono" data-in><li>Medical imaging</li><li>Brain signals</li><li>Edge hardware</li><li>Explainable AI</li><li>Climate</li></ul>
+  </div>
+  <div class="divider"><span></span></div>
+  <div class="half half-g">
+    <div class="tag mono" data-in>TRACK B · GRADUATE</div>
+    <div class="big" data-in><b data-count="8">0</b><span>MSAI theses<br>&amp; projects</span></div>
+    <h3 data-in>Master of Science<br><em>in Artificial Intelligence</em></h3>
+    <p data-in>Graduate students take on problems from the region's grids, hospitals, airlines and supply chains with agents, reinforcement learning and LLMs.</p>
+    <ul class="chips mono" data-in><li>Multi-agent RL</li><li>LLM agents</li><li>RAG</li><li>Forecasting</li><li>Reasoning</li></ul>
+  </div>
+</section>
+
+<!-- 03 · G · EV MARL -->
+<section class="slide proj" data-track="g" data-viz="ev">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>GRADUATE · MSAI PROJECT</div>
+    <h2 data-in>Fifty charging stations learn to <em>cooperate</em>.</h2>
+    <p class="lede" data-in>Every EV charger in a simulated Dubai acts as an agent. A shared policy (MAPPO) teaches them to throttle, defer or redirect cars so queues and grid stress fall together.</p>
+    <div class="metrics">
+      <div class="m" data-in><b data-count="-83.3" data-dec="1" data-suffix="%">0</b><span>mean queue length</span></div>
+      <div class="m" data-in><b data-count="-40" data-suffix="%">0</b><span>peak congestion</span></div>
+      <div class="m" data-in><b data-count="100" data-suffix="%">0</b><span>EVs served</span></div>
+    </div>
+    <div class="people mono" data-in>Fajer Ali · Hana Mahmoud · Rudra U. Thavarankattil · Ashwin S. Narayanan · Perci Angulo Romero<br><span>Supervisor: Dr. Nejib Ben Hadj-Alouane · Data: 21,847 charging events synthesised from DEWA grid data · SUMO</span></div>
+  </div>
+  <div class="viz viz-ev ticks">
+    <svg class="ev-svg" viewBox="0 0 800 640" preserveAspectRatio="xMidYMid slice"></svg>
+    <div class="phase mono"><span class="ph-a">BASELINE · FIRST-COME</span><span class="ph-b">MARL · SHARED POLICY</span></div>
+    <img class="inset" src="../assets/img/ev-station.webp" alt="EV charging station at dusk">
+  </div>
+</section>
+
+<!-- 04 · UG · NEUROASSIST -->
+<section class="slide proj flip" data-track="ug" data-viz="tumor">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>UNDERGRADUATE · RESEARCH PAPER</div>
+    <h2 data-in>NeuroAssist: reading a brain tumour in <em>three dimensions</em>.</h2>
+    <p class="lede" data-in>A 2.5D U-Net reads four MRI sequences together, outlines necrotic core, edema and enhancing tumour, rebuilds the volume in mm³ and estimates survival. It runs as one deployable service.</p>
+    <div class="metrics">
+      <div class="m" data-in><b data-count="369">0</b><span>BraTS 2020 patients</span></div>
+      <div class="m" data-in><b data-count="0.756" data-dec="3">0</b><span>peak Dice score</span></div>
+      <div class="m" data-in><b data-count="4">0</b><span>MRI modalities fused</span></div>
+    </div>
+    <div class="people mono" data-in>Harihar Rengan · Toufic Al Akl · Mohannad Abou Rehab · Seya Makin · Lina Noman<br><span>with Dr. Vinod Pangracious</span></div>
+  </div>
+  <div class="viz viz-tumor">
+    <div class="scans">
+      <figure class="scan ticks"><img src="../assets/img/tumor-axial.webp" alt="Axial MRI slice with segmented tumour"><figcaption class="mono">AXIAL</figcaption><i class="beam"></i></figure>
+      <figure class="scan ticks"><img src="../assets/img/tumor-coronal.webp" alt="Coronal MRI slice"><figcaption class="mono">CORONAL</figcaption><i class="beam"></i></figure>
+      <figure class="scan ticks"><img src="../assets/img/tumor-sagittal.webp" alt="Sagittal MRI slice"><figcaption class="mono">SAGITTAL</figcaption><i class="beam"></i></figure>
+    </div>
+    <div class="dice">
+      <div class="unet">
+        <svg viewBox="0 0 420 150">
+          <g class="u-path" fill="none" stroke-width="2">
+            <path d="M20 20 h50 M40 20 v30 M40 50 h50 M70 50 v30 M70 80 h50 M100 80 v30 M100 110 h70 M180 110 h70 M250 110 h70 M320 110 v-30 M300 80 h50 M330 80 v-30 M330 50 h50 M360 50 v-30 M350 20 h50"/>
+            <path class="skip" d="M70 20 C 180 0, 240 0, 350 20 M90 50 C 190 34, 230 34, 330 50 M120 80 C 190 68, 230 68, 300 80" stroke-dasharray="4 5"/>
+          </g>
+          <text x="210" y="140" text-anchor="middle" class="mono" font-size="11" fill="currentColor" opacity=".6">2.5D U-NET · T1 · T1CE · T2 · FLAIR</text>
+        </svg>
+      </div>
+      <div class="bars mono">
+        <div class="bar" style="--v:.7743;--c:#ffd166"><span>enhancing</span><i></i><b>0.774</b></div>
+        <div class="bar" style="--v:.7617;--c:#5b7cff"><span>edema</span><i></i><b>0.762</b></div>
+        <div class="bar" style="--v:.6109;--c:#ff6a3d"><span>necrotic</span><i></i><b>0.611</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · G · SURVEILLANCE -->
+<section class="slide proj" data-track="g" data-viz="video">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>GRADUATE · MSAI THESIS</div>
+    <h2 data-in>Asking questions of <em>hours</em> of CCTV.</h2>
+    <p class="lede" data-in>Long footage overwhelms vision-language models. This thesis drops idle frames, lets a Mamba state-space model remember events across hours, then lets you ask in plain language what happened and when.</p>
+    <div class="metrics">
+      <div class="m" data-in><b data-count="27.8" data-dec="1" data-suffix="M">0</b><span>visual tokens per hour, unfiltered</span></div>
+      <div class="m" data-in><b data-count="4">0</b><span>stage pipeline</span></div>
+    </div>
+    <div class="people mono" data-in>Hana Mahmoud<br><span>Supervisor: Dr. Nejib Ben Hadj-Alouane · Committee: Dr. Gerasimos Barlas, Dr. Marwa Chendeb El Rai</span></div>
+  </div>
+  <div class="viz viz-video">
+    <div class="strip" aria-hidden="true"></div>
+    <ol class="stages mono">
+      <li>01 Motion filter</li><li>02 Features</li><li>03 Mamba SSM</li><li>04 LLM answer</li>
+    </ol>
+    <div class="chat ticks">
+      <div class="q"><span class="mono">YOU</span><p>Did anyone enter the classroom?</p></div>
+      <div class="a"><span class="mono">MODEL</span><p class="type" data-text="Yes. A man in a red shirt entered the classroom to grab a drink from the table."></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 · UG · SYNAPSE -->
+<section class="slide proj flip" data-track="ug" data-viz="synapse">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>UNDERGRADUATE · RESEARCH PAPER</div>
+    <h2 data-in>Synapse: Alzheimer's screening on a <em>$410 chip</em>.</h2>
+    <p class="lede" data-in>The hippocampus is extracted from a 3-D MRI and streamed into a custom FPGA accelerator that computes texture features in 1.3 seconds. A cascade of models then explains each diagnosis with SHAP. Nothing is sent to the cloud.</p>
+    <div class="metrics">
+      <div class="m" data-in><b data-count="0.903" data-dec="3">0</b><span>AUC · AD vs healthy</span></div>
+      <div class="m" data-in><b data-count="1.32" data-dec="2" data-suffix="s">0</b><span>GLCM on FPGA</span></div>
+      <div class="m" data-in><b data-count="410" data-prefix="$">0</b><span>full prototype</span></div>
+    </div>
+    <div class="people mono" data-in>Ahmed Abushawish · Vikram Varkoor · Hamzeh Alanati<br><span>with Dr. Vinod Pangracious · Xilinx Zynq-7020 on PYNQ-Z2 · ADNI dataset</span></div>
+  </div>
+  <div class="viz viz-synapse">
+    <img class="ui ticks" src="../assets/img/hippo-view.webp" alt="Synapse viewer showing left and right hippocampus heat maps">
+    <svg class="chip" viewBox="0 0 640 250">
+      <defs><pattern id="pins" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="5" height="12" fill="currentColor" opacity=".35"/></pattern></defs>
+      <g class="cube" transform="translate(20 70)">
+        <path d="M0 30 L50 0 L110 0 L60 30 Z" fill="var(--ember-soft)" stroke="var(--ember)"/>
+        <path d="M0 30 h60 v60 h-60 Z" fill="none" stroke="var(--ember)"/>
+        <path d="M60 30 L110 0 v60 L60 90" fill="none" stroke="var(--ember)"/>
+        <text x="30" y="118" class="mono" font-size="11" fill="currentColor" text-anchor="middle">64³ ROI</text>
+      </g>
+      <path id="bus" d="M140 120 H 250" stroke="var(--line-2)" stroke-width="2"/>
+      <text x="195" y="108" class="mono" font-size="10" fill="currentColor" text-anchor="middle" opacity=".7">AXI DMA</text>
+      <g transform="translate(250 50)">
+        <rect x="0" y="-12" width="140" height="12" fill="url(#pins)"/>
+        <rect x="0" y="140" width="140" height="12" fill="url(#pins)"/>
+        <rect width="140" height="140" rx="6" fill="#0d1117" stroke="var(--paper)" stroke-opacity=".5"/>
+        <text x="70" y="62" class="mono" font-size="13" fill="var(--paper)" text-anchor="middle">ZYNQ-7020</text>
+        <text x="70" y="82" class="mono" font-size="10" fill="var(--ember)" text-anchor="middle">3-D GLCM · 66.7 MHz</text>
+        <rect class="util" x="20" y="100" width="100" height="6" fill="var(--line-2)"/>
+        <rect class="util-fill" x="20" y="100" width="20" height="6" fill="var(--ember)"/>
+        <text x="70" y="124" class="mono" font-size="9" fill="currentColor" text-anchor="middle" opacity=".7">20% LUT · 11% DSP · 3% BRAM</text>
+      </g>
+      <path id="bus2" d="M390 120 H 440" stroke="var(--line-2)" stroke-width="2"/>
+      <g class="cascade mono" font-size="11" transform="translate(445 30)">
+        <g class="task"><rect width="185" height="52" rx="4"/><text x="10" y="20">1 · AD vs healthy</text><rect class="auc" x="10" y="30" width="120" height="8"/><rect class="auc-f" x="10" y="30" width="0" height="8" data-w="108.4"/><text x="140" y="38">.903</text></g>
+        <g class="task" transform="translate(0 66)"><rect width="185" height="52" rx="4"/><text x="10" y="20">2 · healthy vs MCI</text><rect class="auc" x="10" y="30" width="120" height="8"/><rect class="auc-f" x="10" y="30" width="0" height="8" data-w="96.4"/><text x="140" y="38">.803</text></g>
+        <g class="task" transform="translate(0 132)"><rect width="185" height="52" rx="4"/><text x="10" y="20">3 · stable vs converting</text><rect class="auc" x="10" y="30" width="120" height="8"/><rect class="auc-f" x="10" y="30" width="0" height="8" data-w="93.5"/><text x="140" y="38">.779</text></g>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- 07 · G · PV -->
+<section class="slide proj" data-track="g" data-viz="pv">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>GRADUATE · MSAI RESEARCH · PREPRINT</div>
+    <h2 data-in>Forecasting solar power by first asking: <em>sunny or cloudy?</em></h2>
+    <p class="lede" data-in>A spectral-flatness detector reads only the power curve, decides the sky regime and sends each sample to a specialist model. Tested on five Gulf solar plants (75–150&nbsp;MW) and NREL Golden.</p>
+    <div class="metrics">
+      <div class="m" data-in><b data-count="15.96" data-dec="2" data-suffix="%">0</b><span>lower RMSE, Gulf plants</span></div>
+      <div class="m" data-in><b data-count="24.88" data-dec="2" data-suffix="%">0</b><span>NREL Golden, unchanged</span></div>
+      <div class="m" data-in><b data-count="0.99" data-dec="2">0</b><span>regime classifier F1 (best)</span></div>
+    </div>
+    <div class="people mono" data-in>Lorenzo Calligaris · Nejib Ben Hadj-Alouane · Monia Turki-Hadj Alouane · Atidel B. Hadj-Alouane<br><span>AUD · King Khalid University · University of Sharjah · Univ. of Tunis El Manar · SSRN 7267413</span></div>
+  </div>
+  <div class="viz viz-pv">
+    <svg class="pv-svg" viewBox="0 0 760 330">
+      <g class="grid"></g>
+      <path class="pv-fore" fill="none" stroke-width="2"/>
+      <path class="pv-act" fill="none" stroke-width="2.5"/>
+      <rect class="win" y="20" height="250" width="120"/>
+      <text class="sf mono" x="0" y="14" font-size="12"></text>
+    </svg>
+    <div class="route mono">
+      <span class="r-in">PV power</span><span class="r-ar">→</span><span class="r-gate">spectral flatness</span><span class="r-ar">→</span>
+      <span class="r-out"><em class="r-sun">SUNNY MODEL</em><em class="r-cloud">CLOUDY MODEL</em></span>
+    </div>
+    <div class="plants mono">
+      <div style="--v:12.8"><span>Gulf 1 · 100 MW</span><i></i><b>12.8%</b></div>
+      <div style="--v:14.7"><span>Gulf 2 · 150 MW</span><i></i><b>14.7%</b></div>
+      <div style="--v:10.2"><span>Gulf 3 · 125 MW</span><i></i><b>10.2%</b></div>
+      <div style="--v:37.9"><span>Gulf 4 · 75 MW</span><i></i><b>37.9%</b></div>
+      <div style="--v:4.3"><span>Gulf 5 · 125 MW</span><i></i><b>4.3%</b></div>
+      <div style="--v:24.9"><span>NREL Golden, CO</span><i></i><b>24.9%</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 · UG · CKD -->
+<section class="slide proj flip" data-track="ug" data-viz="ckd">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>UNDERGRADUATE · RESEARCH PAPER</div>
+    <h2 data-in>Screening kidney disease with <em>one number</em> and one formula.</h2>
+    <p class="lede" data-in>Symbolic regression and the principle of maximum entropy, run independently, arrive at the same closed-form curve in serum creatinine. A doctor in a resource-limited clinic can read it at a glance.</p>
+    <div class="metrics">
+      <div class="m" data-in><b data-count="0.81" data-dec="2">0</b><span>cross-validated AUC</span></div>
+      <div class="m" data-in><b data-count="0.95" data-dec="2">0</b><span>AUC on held-out clinical cohort</span></div>
+      <div class="m" data-in><b data-count="2249">0</b><span>patients</span></div>
+    </div>
+    <div class="people mono" data-in>Harihar Rengan · Dr. Vinod Pangracious</div>
+  </div>
+  <div class="viz viz-ckd">
+    <div class="formula serif">P(c) = σ<span class="paren">(</span>0.991 − 0.214 · e<sup>c(1.532 − c)</sup><span class="paren">)</span></div>
+    <div class="formula-note mono">c = serum creatinine (mg/dL) · symbolic-regression form, Platt-calibrated below</div>
+    <svg class="ckd-svg" viewBox="0 0 760 380">
+      <g class="axes"></g>
+      <rect class="band"/>
+      <path class="curve" fill="none" stroke-width="3"/>
+      <line class="probe-l"/>
+      <circle class="probe" r="7"/>
+      <g class="readout mono"><rect rx="4" width="270" height="50"/><text class="r1" x="12" y="21"></text><text class="r2" x="12" y="39"></text></g>
+    </svg>
+  </div>
+</section>
+
+<!-- 09 · G · TRM -->
+<section class="slide proj" data-track="g" data-viz="arc">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>GRADUATE · MSAI THESIS</div>
+    <h2 data-in>A tiny model that learns each puzzle <em>from its examples</em>.</h2>
+    <p class="lede" data-in>Earlier recursive solvers looked a puzzle up by its ID; give them a blank ID and they score zero. Here the demonstrations are written into a Titans neural memory at test time, and that memory steers a small network that refines its answer up to 16 times.</p>
+    <div class="metrics">
+      <div class="m" data-in><b data-count="16">0</b><span>task tokens from memory</span></div>
+      <div class="m" data-in><b data-count="16">0</b><span>refinement steps, max</span></div>
+      <div class="m" data-in><b data-count="0">0</b><span>puzzle IDs needed</span></div>
+    </div>
+    <div class="people mono" data-in>Lorenzo Calligaris<br><span>ARC-AGI-1 · Titans memory · Tiny Recursive Model</span></div>
+  </div>
+  <div class="viz viz-arc">
+    <div class="arc-bg" style="background-image:url(../assets/img/arc-bg.webp)"></div>
+    <div class="arc-stage">
+      <div class="col demos"><div class="lbl mono">DEMONSTRATIONS</div></div>
+      <div class="col mem">
+        <div class="lbl mono">TITANS MEMORY</div>
+        <div class="tokens"></div>
+        <div class="lbl mono small">write · fast weights U</div>
+      </div>
+      <div class="col test">
+        <div class="lbl mono">TEST · STEP <b class="step">0</b>/16</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · UG · EEG -->
+<section class="slide proj flip" data-track="ug" data-viz="eeg">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>UNDERGRADUATE · RESEARCH PAPER</div>
+    <h2 data-in>Can EEG tell when your <em>mind wanders</em>?</h2>
+    <p class="lede" data-in>Riemannian brain-signal features detect mind-wandering while people watch video. During reading they fall to chance. The paper shows that a common evaluation shortcut had been inflating published results.</p>
+    <div class="metrics">
+      <div class="m" data-in><b data-count="0.936" data-dec="3">0</b><span>AUROC, video (published 0.876)</span></div>
+      <div class="m" data-in><b data-count="0.809" data-dec="3">0</b><span>with leakage removed</span></div>
+      <div class="m" data-in><b data-count="0.542" data-dec="3">0</b><span>reading: near chance</span></div>
+    </div>
+    <div class="people mono" data-in>Harihar Rengan · Eklavya Tomar · Dr. Vinod Pangracious</div>
+  </div>
+  <div class="viz viz-eeg">
+    <canvas class="eeg"></canvas>
+    <div class="probe-pop mono"><span>THOUGHT PROBE</span>Were you on task just now?</div>
+    <div class="auroc mono">
+      <div class="chance"><span>chance 0.5</span></div>
+      <div class="col" style="--v:.936"><i></i><b>.936</b><span>video<br>epoch split</span></div>
+      <div class="col" style="--v:.809"><i></i><b>.809</b><span>video<br>cross-block</span></div>
+      <div class="col" style="--v:.542"><i></i><b>.542</b><span>reading<br>within subject</span></div>
+      <div class="col" style="--v:.411"><i></i><b>.411</b><span>cross<br>dataset</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · G · SHIPMENT -->
+<section class="slide proj" data-track="g" data-viz="ship">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>GRADUATE · MSAI PROJECT</div>
+    <h2 data-in>Agents plan the shipments. <em>The buyer decides.</em></h2>
+    <p class="lede" data-in>Every week, for every supplier: what to order and whether to send it by sea, road or air. LLM agents read the mailbox and brief the buyer, and an optimiser plans eight weeks ahead. Every figure an agent states traces back to the planner.</p>
+    <div class="metrics">
+      <div class="m" data-in><b data-count="98.2" data-dec="1" data-suffix="%">0</b><span>demand served, 40-week rehearsal</span></div>
+      <div class="m" data-in><b data-count="7" data-suffix="%">0</b><span>cheaper than the human buyer</span></div>
+      <div class="m" data-in><b data-count="26">0</b><span>fewer containers</span></div>
+    </div>
+    <div class="people mono" data-in>Lorenzo Calligaris<br><span>LightGBM demand · MILP on HiGHS · OWL + SHACL rule book · LLM agents</span></div>
+  </div>
+  <div class="viz viz-ship">
+    <div class="hero" style="background-image:url(../assets/img/ship-hero.webp)"></div>
+    <div class="weeks mono"></div>
+    <div class="modes mono"><span>dry box</span><span class="pick">reefer 2°C</span><span>groupage</span><span>truck</span><span>air</span></div>
+    <div class="mail ticks">
+      <div class="mono h">SIGNAL AGENT · EMAIL</div>
+      <p>Delays through Suez: <b>+10 days</b> lead time on European lanes.</p>
+      <div class="btns mono"><span class="ok">ACCEPT</span><span>EDIT</span><span>REJECT</span></div>
+    </div>
+    <div class="costs mono">
+      <div class="lbl">TOTAL COST · AED M</div>
+      <div class="c" style="--v:1.57"><span>Planner</span><i></i><b>1.57</b></div>
+      <div class="c" style="--v:1.70"><span>Human buyer</span><i></i><b>1.70</b></div>
+      <div class="c" style="--v:1.99"><span>One at a time</span><i></i><b>1.99</b></div>
+      <div class="c" style="--v:2.35"><span>Rule of thumb</span><i></i><b>2.35</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 · UG · DYSLEXIA -->
+<section class="slide proj flip" data-track="ug" data-viz="gaze">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>UNDERGRADUATE · RESEARCH PAPER</div>
+    <h2 data-in>Spotting dyslexia in <em>how eyes move</em> across a page.</h2>
+    <p class="lede" data-in>Three fixation detectors disagree five-fold on what the eyes did, yet screening accuracy barely moves. One warning: reading time alone, measured with a stopwatch, already scores 0.92.</p>
+    <div class="metrics">
+      <div class="m" data-in><b data-count="70">0</b><span>children, ETDD70</span></div>
+      <div class="m" data-in><b data-count="0.94" data-dec="2">0</b><span>AUROC upper bound</span></div>
+      <div class="m" data-in><b data-count="5" data-suffix="×">0</b><span>detector disagreement</span></div>
+    </div>
+    <div class="people mono" data-in>Eklavya Tomar<br><span>I2MC · I-VT · I-DT · leave-one-subject-out validation</span></div>
+  </div>
+  <div class="viz viz-gaze">
+    <svg class="page" viewBox="0 0 720 420"></svg>
+    <div class="detector mono">
+      <span>DETECTOR</span><b class="det">I2MC</b><span class="fx">fixations <b>0</b></span>
+    </div>
+    <div class="band mono">
+      <div class="track"><div class="ok"></div><i class="needle"></i></div>
+      <div class="scale"><span>0.80</span><span>0.86</span><span>0.94</span><span>1.0</span></div>
+      <div class="cap">screening AUROC stays inside the band</div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 · G · HVAC -->
+<section class="slide proj" data-track="g" data-viz="hvac">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>GRADUATE · MSAI THESIS</div>
+    <h2 data-in>Cooling a room <em>before</em> anyone arrives, and not after they leave.</h2>
+    <p class="lede" data-in>Gradient-boosted models forecast tomorrow's occupancy for each office, the HVAC is scheduled to match, and the energy and comfort cost of every forecast error is measured on real data from two buildings.</p>
+    <div class="metrics">
+      <div class="m" data-in><b data-count="2">0</b><span>real office buildings</span></div>
+      <div class="m" data-in><b data-count="8">0</b><span>rooms and floors</span></div>
+      <div class="m" data-in><b data-count="1206">0</b><span>room/floor-days tested</span></div>
+    </div>
+    <div class="people mono" data-in>Fajer Mohammed<br><span>Supervisors: Dr. Nejib Ben Hadj-Alouane, Dr. Muhammad Fahad Zia · Aalborg University &amp; Berkeley Lab data</span></div>
+  </div>
+  <div class="viz viz-hvac">
+    <img class="bldg ticks" src="../assets/img/hvac-building.webp" alt="Building 59, Berkeley Lab">
+    <svg class="day" viewBox="0 0 760 300">
+      <g class="hours mono"></g>
+      <path class="prob" />
+      <path class="occ" fill="none" stroke-width="2"/>
+      <g class="sched"></g>
+      <line class="now" y1="10" y2="250"/>
+      <text class="lbl mono" x="0" y="12">P(occupied) · forecast at midnight</text>
+      <text class="lbl mono" x="0" y="222">HVAC schedule</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 14 · UG · HEART -->
+<section class="slide proj flip" data-track="ug" data-viz="heart">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>UNDERGRADUATE · RESEARCH PAPER</div>
+    <h2 data-in>Flagging heart-failure risk <em>early</em>, and explaining why.</h2>
+    <p class="lede" data-in>Six model families are benchmarked for calibrated, explainable risk, then served through an app with one view for clinicians and one for patients. A Gemini assistant answers patient questions, held in check by SHAP, consistency checks and human review.</p>
+    <div class="metrics">
+      <div class="m" data-in><b data-count="6">0</b><span>model families benchmarked</span></div>
+      <div class="m" data-in><b data-count="2">0</b><span>user journeys, clinician &amp; patient</span></div>
+    </div>
+    <div class="people mono" data-in>Harihar Rengan · George Abdallah · Hyunmin Park<br><span>with Dr. Vinod Pangracious · XGBoost · SHAP · n8n · HIPAA &amp; GDPR-aligned</span></div>
+  </div>
+  <div class="viz viz-heart">
+    <canvas class="ecg"></canvas>
+    <div class="pipe mono">
+      <span>clinical record</span><span>XGBoost · RF · Cox · ANN · SVM · DT</span><span>SHAP why</span><span>clinician</span><span>patient assistant</span>
+    </div>
+    <img class="fig ticks" src="../assets/img/hf-regression.webp" alt="Predicted versus actual ejection fraction scatter plot">
+  </div>
+</section>
+
+<!-- 15 · G · IPC RAG -->
+<section class="slide proj" data-track="g" data-viz="rag">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>GRADUATE · MSAI THESIS · WITH SEHA–SKMC</div>
+    <h2 data-in>Finding the diagnosis buried in a <em>long</em> referral.</h2>
+    <p class="lede" data-in>Retrieval-augmented generation reads de-identified pediatric reports and pulls out the diagnosis, the treatment requested abroad and its justification, each linked to its source line. Physicians validate it and the committee decides.</p>
+    <div class="metrics">
+      <div class="m" data-in><b data-count="3">0</b><span>decision fields, source-grounded</span></div>
+      <div class="m" data-in><b data-count="5">0</b><span>step clinical workflow</span></div>
+    </div>
+    <div class="people mono" data-in>Fatima AlJaberi<br><span>In collaboration with SEHA · Sheikh Khalifa Medical City</span></div>
+  </div>
+  <div class="viz viz-rag">
+    <div class="doc ticks"><div class="doc-h mono">IPC REPORT · DE-IDENTIFIED</div><div class="clip"><div class="lines"></div></div></div>
+    <div class="card ticks">
+      <div class="mono h">STRUCTURED SUMMARY</div>
+      <div class="f" data-f="0"><span class="mono">DIAGNOSIS</span><p><i style="--w:38%"></i><i style="--w:14%"></i><i style="--w:24%"></i></p><em class="mono">src · p.3 ¶2</em></div>
+      <div class="f" data-f="1"><span class="mono">TREATMENT ABROAD</span><p><i style="--w:26%"></i><i style="--w:46%"></i></p><em class="mono">src · p.11 ¶4</em></div>
+      <div class="f" data-f="2"><span class="mono">JUSTIFICATION</span><p><i style="--w:20%"></i><i style="--w:10%"></i><i style="--w:34%"></i><i style="--w:12%"></i></p><em class="mono">src · p.17 ¶1</em></div>
+      <div class="rule mono">AI extracts · physicians verify · committee decides</div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 · UG · CARBON -->
+<section class="slide proj flip" data-track="ug" data-viz="forest">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>UNDERGRADUATE · RESEARCH PAPER &amp; POSTER</div>
+    <h2 data-in>Counting carbon <em>tree by tree</em>.</h2>
+    <p class="lede" data-in>YOLOv8 identifies tree species in photos, because how much carbon a forest stores depends on which trees it holds. The full toolset adds sequestration estimates, deforestation mapping and a blockchain platform for trading credits.</p>
+    <div class="metrics">
+      <div class="m" data-in><b data-count="2030" data-raw>0</b><span>net-zero target</span></div>
+      <div class="m" data-in><b data-count="2">0</b><span>UN goals · SDG 13 &amp; 15</span></div>
+    </div>
+    <div class="people mono" data-in>Ahmed Abushawish · Amos Akakpo · Hussien Alsalehi<br><span>with Dr. Vinod Pangracious &amp; Dr. Nejib Ben Hadj-Alouane</span></div>
+  </div>
+  <div class="viz viz-forest">
+    <svg class="canopy" viewBox="0 0 760 460"></svg>
+    <div class="chain mono"><span>species</span><span>biomass</span><span>CO₂ t</span><span>credit</span><span>ledger</span></div>
+    <div class="note mono">illustration · detector output styled after YOLOv8</div>
+  </div>
+</section>
+
+<!-- 17 · G · SKYWARDS -->
+<section class="slide proj" data-track="g" data-viz="agents">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>GRADUATE · MSAI PROJECT</div>
+    <h2 data-in>Four AI agents help you spend <em>miles you forgot you had</em>.</h2>
+    <p class="lede" data-in>A profiler learns how you travel, a value estimator prices every reward, a recommender picks three and says why, and an orchestrator keeps each member's data separate. Requests that try to reach someone else's account are blocked.</p>
+    <div class="metrics">
+      <div class="m" data-in><b data-count="4">0</b><span>cooperating agents</span></div>
+      <div class="m" data-in><b data-count="3">0</b><span>rewards, each explained</span></div>
+    </div>
+    <div class="people mono" data-in>Sultan AlBastaki<br><span>Agentic, privacy-preserving recommendation · Emirates Skywards case</span></div>
+  </div>
+  <div class="viz viz-agents">
+    <svg class="net" viewBox="0 0 760 520">
+      <g class="links"></g><g class="packets"></g><g class="nodes"></g>
+    </svg>
+    <div class="rewards mono"><span>F1 experience</span><span>Lounge pass</span><span>Cashback</span></div>
+  </div>
+</section>
+
+<!-- 18 · CLOSE -->
+<section class="slide s-close" data-track="x" data-autoslide="14000" data-viz="close">
+  <div class="close-l">
+    <div class="kicker mono" data-in>FALL 2026 · SCHOOL OF ENGINEERING</div>
+    <h1 data-in>The next project<br>on this screen <em>could be yours</em>.</h1>
+    <div class="paths">
+      <div class="p p-ug" data-in><span class="mono">UNDERGRADUATE</span><b>BS Computer Engineering</b><p>Research with faculty from your first years: hardware, medical AI, climate.</p></div>
+      <div class="p p-g" data-in><span class="mono">GRADUATE</span><b>MSc Artificial Intelligence</b><p>Machine learning · deep learning · generative AI · automation &amp; IoT · industrial case studies.</p></div>
+    </div>
+    <div class="cta mono" data-in>Try the three AI challenges at the booth · <b>aud.edu</b></div>
+  </div>
+  <div class="close-r" data-in>
+    <img src="../assets/img/msai-flyer.webp" alt="MSAI program flyer with registration QR code">
+  </div>
+</section>
+
+</div>
+</div>
+
+<script src="../vendor/reveal/reveal.js"></script>
+<script src="deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+import puppeteer from "puppeteer-core";
+const base = process.argv[2] || "http://localhost:8765";
+const b = await puppeteer.launch({ executablePath: "/usr/bin/google-chrome", headless: "new", args: ["--no-sandbox"] });
+const p = await b.newPage(); await p.setViewport({ width: 1920, height: 1080 });
+const errs = []; p.on("pageerror", (e) => errs.push(e.message)); p.on("response", (r) => r.status() >= 400 && errs.push(r.status() + " " + r.url()));
+await p.goto(base + "/", { waitUntil: "networkidle0" });
+await p.goto(base + "/presentation/", { waitUntil: "networkidle0" });
+const fonts = await p.evaluate(async () => { await document.fonts.ready; return ["Instrument Serif", "Geist", "Geist Mono"].map((f) => f + ":" + document.fonts.check(`20px "${f}"`)); });
+const t0 = await p.evaluate(() => Reveal.getState().indexh);
+await new Promise((r) => setTimeout(r, 12500));
+const t1 = await p.evaluate(() => Reveal.getState().indexh);
+await p.keyboard.press("a"); await new Promise((r) => setTimeout(r, 300));
+const paused = await p.evaluate(() => document.body.classList.contains("paused"));
+console.log({ fonts, startSlide: t0, after12s: t1, pausedAfterA: paused, errs });
+await b.close();

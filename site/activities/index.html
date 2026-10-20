@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Challenges</title>
+<meta name="description" content="Three hands-on AI challenges from the AUD AI Festival: a readiness quiz, a prompt builder and an AI-or-not sorting game.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2307090d'/%3E%3Ccircle cx='12' cy='16' r='5' fill='%23ff6a3d'/%3E%3Ccircle cx='21' cy='16' r='5' fill='none' stroke='%238fd8ff' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="activities.css">
+</head>
+<body class="blueprint grain">
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="spot" id="spot" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#"><span class="dot"></span>AUD / AI CHALLENGES</a>
+    <nav>
+      <a href="#quiz" data-nav="quiz">01<span>&nbsp;· Ready?</span></a>
+      <a href="#prompt" data-nav="prompt">02<span>&nbsp;· Prompt</span></a>
+      <a href="#ainot" data-nav="ainot">03<span>&nbsp;· AI or not</span></a>
+      <button class="snd" id="snd" type="button" aria-pressed="false" title="Sound effects"><i></i><span>SOUND</span></button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HUB -->
+  <section class="hub wrap" id="hub">
+    <div class="kicker">AI FESTIVAL 2026 · AMERICAN UNIVERSITY IN DUBAI</div>
+    <h1 class="split">Three small tests<br>for <em>curious</em> minds.</h1>
+    <p class="lede">No experience needed. Each challenge takes a few minutes, and you will leave knowing something you didn't know when you walked in.</p>
+    <div class="cards">
+      <a class="card-link c-quiz" href="#quiz">
+        <svg class="art art-net" viewBox="0 0 150 120" fill="none" stroke="currentColor" stroke-width="1" style="color:var(--ion)"><circle cx="40" cy="30" r="6"/><circle cx="40" cy="60" r="6"/><circle cx="40" cy="90" r="6"/><circle cx="90" cy="45" r="6"/><circle cx="90" cy="75" r="6"/><circle cx="135" cy="60" r="6"/><path d="M46 30 84 45M46 30 84 75M46 60 84 45M46 60 84 75M46 90 84 45M46 90 84 75M96 45 129 60M96 75 129 60" opacity=".6"/></svg>
+        <span class="n">01</span>
+        <h2>Are you AI-engineering ready?</h2>
+        <p>Fifteen questions on how machines learn. Each answer comes with the reason, and some link to research done here at AUD.</p>
+        <div class="meta"><span>15 questions</span><b>≈ 5 min →</b></div>
+      </a>
+      <a class="card-link c-prompt" href="#prompt">
+        <svg class="art art-bars" viewBox="0 0 150 120" fill="none" stroke="currentColor" stroke-width="1" style="color:var(--signal)"><rect x="20" y="18" width="110" height="16" rx="2"/><rect x="34" y="42" width="96" height="16" rx="2"/><rect x="20" y="66" width="80" height="16" rx="2" stroke-dasharray="3 3"/><rect x="48" y="90" width="82" height="16" rx="2"/></svg>
+        <span class="n">02</span>
+        <h2>Build the best prompt</h2>
+        <p>Drag the right building blocks into a prompt for coding, writing or studying, then see how a strong prompt scores against a weak one.</p>
+        <div class="meta"><span>3 scenarios</span><b>≈ 4 min →</b></div>
+      </a>
+      <a class="card-link c-ainot" href="#ainot">
+        <svg class="art art-fan" viewBox="0 0 150 120" fill="none" stroke="currentColor" stroke-width="1" style="color:var(--ember)"><rect x="18" y="30" width="44" height="60" rx="3" transform="rotate(-8 40 60)"/><rect x="58" y="24" width="44" height="60" rx="3"/><rect x="96" y="30" width="44" height="60" rx="3" transform="rotate(8 118 60)"/></svg>
+        <span class="n">03</span>
+        <h2>AI, or <em>not</em> AI?</h2>
+        <p>A face-unlock, a toaster, a chess robot from 1770. Sort twelve tricky cards. Some will surprise you.</p>
+        <div class="meta"><span>12 cards</span><b>≈ 3 min →</b></div>
+      </a>
+    </div>
+    <div class="ticker" aria-hidden="true"><div class="tk"></div></div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="act wrap" id="quiz" hidden>
+    <div class="act-head">
+      <div>
+        <div class="tag"><i></i>CHALLENGE 01</div>
+        <h1>Are you AI-engineering <em>ready</em>?</h1>
+      </div>
+      <div class="hud"><span class="xp"><b id="qXP">0</b> XP</span><span class="streak" id="qStreak"><i></i><b>0</b> streak</span><button class="btn" data-restart="quiz">Restart</button></div>
+    </div>
+    <div class="q-progress" id="qProgress"></div>
+    <div id="qBody"></div>
+  </section>
+
+  <!-- PROMPT -->
+  <section class="act wrap" id="prompt" hidden>
+    <div class="act-head">
+      <div>
+        <div class="tag"><i></i>CHALLENGE 02</div>
+        <h1>Build the best <em>prompt</em>.</h1>
+        <p>A good prompt tells the AI who to be, what to do, what it needs to know, the limits, and what the answer should look like. Some of these blocks help and some don't.</p>
+      </div>
+      <button class="btn" data-restart="prompt">Reset</button>
+    </div>
+    <div class="modes" id="pbModes"></div>
+    <div class="pb" id="pb">
+      <div>
+        <div class="zone-h"><span>Block library</span><span id="pbPoolCount"></span></div>
+        <div class="pool" id="pbPool" data-zone="pool"></div>
+      </div>
+      <div>
+        <div class="live"><span>PROMPT STRENGTH</span><div class="lm"><i id="pbLive"></i></div><b id="pbLiveN">0</b></div>
+        <div class="zone-h"><span>Your prompt</span><span>drag to reorder</span></div>
+        <div class="canvas" id="pbCanvas" data-zone="canvas"></div>
+        <div class="preview"><div class="h"><span>PROMPT PREVIEW</span><span id="pbWords">0 words</span></div><pre id="pbPreview"></pre></div>
+        <div class="pb-actions">
+          <button class="btn primary" id="pbCheck">Check my prompt</button>
+          <button class="btn" id="pbExpert">Show an expert version</button>
+        </div>
+      </div>
+    </div>
+    <div id="pbReport"></div>
+  </section>
+
+  <!-- AI OR NOT -->
+  <section class="act wrap" id="ainot" hidden>
+    <div class="act-head">
+      <div>
+        <div class="tag"><i></i>CHALLENGE 03</div>
+        <h1>AI, or <em>not</em> AI?</h1>
+        <p>Drag each card to a side, or tap a side. AI means the system learned from data or chooses between options. A fixed rule doesn't count, however clever the marketing.</p>
+      </div>
+      <div class="hud"><span class="streak" id="anStreak"><i></i><b>0</b> streak</span><button class="btn" data-restart="ainot">Restart</button></div>
+    </div>
+    <div class="an" id="an">
+      <button class="bin ai" data-zone="ai" id="binAI"><b>AI</b><span>learns or decides</span></button>
+      <div class="stage" id="anStage"></div>
+      <button class="bin not" data-zone="not" id="binNot"><b>Not AI</b><span>fixed rules, or a human</span></button>
+    </div>
+    <div class="an-foot"><div class="an-dots" id="anDots"></div><span id="anScore"></span></div>
+  </section>
+</main>
+
+<div class="idle-note" id="idle" hidden>Still there? Returning to the start in <b id="idleS">10</b>s · tap anywhere</div>
+
+<script src="fx.js"></script>
+<script src="activities.js"></script>
+</body>
+</html>

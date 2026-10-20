@@ -1,0 +1,21 @@
+{
+  "name": "aud-ai-festival",
+  "version": "1.0.0",
+  "description": "AUD AI Festival 2026: auto-playing research showcase + three AI activities",
+  "scripts": {
+    "serve": "python3 -m http.server 8765 --bind 127.0.0.1 --directory site",
+    "vendor": "cp node_modules/reveal.js/dist/{reveal.js,reveal.css,reset.css} site/vendor/reveal/",
+    "test": "node tests/test-activities.mjs http://127.0.0.1:8765 tests/shots && node tests/check-autoplay.mjs http://127.0.0.1:8765",
+    "shoot": "node tests/shoot-deck.mjs http://127.0.0.1:8765 tests/shots"
+  },
+  "dependencies": {
+    "@fontsource-variable/geist": "^5.2.8",
+    "@fontsource-variable/geist-mono": "^5.2.7",
+    "@fontsource/instrument-serif": "^5.2.8",
+    "reveal.js": "^5.2.1"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^24.10.0"
+  },
+  "private": true
+}
