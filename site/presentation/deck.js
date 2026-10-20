@@ -24,14 +24,14 @@
     every(ms, fn) { this.ids.push(setInterval(() => this.alive && fn(), ms)); }
     loop(fn) {
       const t0 = performance.now();
-      const step = (now) => { if (!this.alive) return; fn((now - t0) / 1000); requestAnimationFrame(step); };
+      const step = (now) => { if (!this.alive) return; fn(Math.max(0, now - t0) / 1000); requestAnimationFrame(step); };
       requestAnimationFrame(step);
     }
     tween(ms, fn, done) {
       const t0 = performance.now();
       const step = (now) => {
         if (!this.alive) return;
-        const t = clamp((now - t0) / ms, 0, 1);
+        const t = clamp(Math.max(0, now - t0) / ms, 0, 1);
         fn(t);
         if (t < 1) requestAnimationFrame(step); else if (done) done();
       };
@@ -506,8 +506,10 @@
     run.loop((t) => {
       const { ctx, w, h } = fitCanvas(c);
       if (!ys || ys.length !== Math.ceil(w)) ys = new Array(Math.ceil(w)).fill(null);
-      const x = Math.floor((t * 260) % w);
-      for (let i = lastX; i !== x; i = (i + 1) % w) ys[i] = h * 0.62 - beat(((i + Math.floor(t * 260 / w) * w) / 170) % 1) * h * 0.5;
+      if (!w) return;
+      const x = ((Math.floor(t * 260) % w) + w) % w;
+      // fill the columns swept since the last frame (at most one full width, so this can never spin)
+      for (let n = 0, i = lastX; i !== x && n < w; n++, i = (i + 1) % w) ys[i] = h * 0.62 - beat(((i + Math.floor(t * 260 / w) * w) / 170) % 1) * h * 0.5;
       lastX = x;
       ctx.clearRect(0, 0, w, h);
       ctx.beginPath(); let pen = false;

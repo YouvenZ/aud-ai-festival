@@ -15,7 +15,9 @@
     "reveal.js": "^5.2.1"
   },
   "devDependencies": {
-    "puppeteer-core": "^24.10.0"
+    "jsqr": "^1.4.0",
+    "puppeteer-core": "^24.10.0",
+    "qrcode": "^1.5.4"
   },
   "private": true
 }
