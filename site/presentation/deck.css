@@ -102,6 +102,24 @@ body[data-viz="field"] .qr-chip, body[data-viz="close"] .qr-chip { opacity: 0; }
 .people { font-size: 13px; line-height: 1.7; color: var(--paper-2); letter-spacing: .02em; }
 .people span { color: var(--mute); }
 
+/* official project title, partner chip, student portrait */
+.ptitle { margin-top: -10px; padding-left: 16px; border-left: 2px solid var(--acc); font-family: var(--display); font-weight: 500; font-stretch: 92%; font-size: 19px; line-height: 1.35; color: var(--paper); max-width: 30em; }
+.tag { white-space: nowrap; }
+.tag .partner { margin-left: auto; display: inline-flex; flex-direction: column; align-items: flex-start; gap: 7px; padding: 8px 14px 10px; border: 1px solid var(--line-2); border-radius: 4px; background: rgba(7,9,13,.6); backdrop-filter: blur(6px); }
+.tag .partner em { font-style: normal; font-size: 9px; letter-spacing: .2em; color: var(--mute); line-height: 1; }
+.tag .partner img { height: 30px; width: auto; display: block; }
+.tag .partner img[src*="skmc"] { height: 36px; }
+.tag .partner img[src*="emirates"] { height: 50px; }
+.tag .partner img[src*="dxs"] { height: 42px; }
+/* slides that carry the official title get a slightly tighter column */
+.meta:has(.ptitle) { gap: 20px; }
+.meta:has(.ptitle) h2 { font-size: 54px; }
+.meta:has(.ptitle) .lede { font-size: 18.5px; }
+.meta:has(.ptitle) .metrics b { font-size: 46px; }
+.meta:has(.ptitle) .metrics .m { padding-top: 14px; }
+.who { display: flex; align-items: center; gap: 18px; }
+.who .avatar { width: 58px; height: 58px; flex: none; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--ink), 0 0 0 3px var(--acc); }
+
 .viz { position: relative; min-width: 0; }
 .ticks { --line-2: rgba(236,232,223,.28); }
 
@@ -450,7 +468,43 @@ body[data-viz="field"] .qr-chip, body[data-viz="close"] .qr-chip { opacity: 0; }
 .reveal .slides section .snap { opacity: 0; }
 .reveal .slides section.present .snap { animation: snapIn 1.2s var(--ease-out) 1.1s both; }
 @keyframes snapIn { from { opacity: 0; transform: translateY(30px) rotate(calc(var(--rot, -2deg) * 3)) scale(.94); } to { opacity: 1; transform: rotate(var(--rot, -2deg)); } }
-.snap-skmc { width: 300px; height: 190px; right: -18px; bottom: -34px; }
+.snap-skmc { width: 250px; height: 150px; right: -6px; bottom: -6px; }
 
 /* reveal.js draws its own circular play/pause control bottom-left; hide it (A still pauses) */
 .reveal .playback { display: none !important; }
+
+/* ───────── byline: student name stands out ───────── */
+.who .people .nm { display: block; font-family: var(--display); font-weight: 600; font-size: 19px; letter-spacing: -.005em; color: var(--paper); line-height: 1.3; margin-bottom: 2px; }
+.who .avatar { width: 62px; height: 62px; box-shadow: 0 0 0 3px var(--ink), 0 0 0 4px var(--acc), 0 10px 30px -8px var(--acc-soft, rgba(143,216,255,.4)); }
+
+/* ───────── 18 · researchers & partners ───────── */
+.s-people { display: flex !important; flex-direction: column; gap: 30px; padding: 112px 88px 104px !important; }
+.s-people .pp-head { display: flex; flex-direction: column; gap: 18px; }
+.s-people h2 { font-size: 52px; line-height: 1.04; text-wrap: balance; max-width: 24em; }
+.s-people .partners { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px 14px; }
+.s-people .pp-label { grid-column: 1 / -1; font-size: 10.5px; letter-spacing: .24em; color: var(--mute); }
+.s-people .pt { margin: 0; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 12px; padding: 18px 20px 14px; border: 1px solid var(--line-2); border-top: 2px solid var(--acc); border-radius: 4px; background: linear-gradient(180deg, rgba(143,216,255,.07), rgba(7,9,13,.4)); }
+.s-people .pt::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.09), transparent); animation: ptSheen 7s ease-in-out infinite; animation-delay: calc(var(--i, 0) * .6s + 1.8s); }
+@keyframes ptSheen { 0%, 70% { left: -60%; } 100% { left: 130%; } }
+.s-people .pt-logo { height: 58px; display: flex; align-items: center; }
+.s-people .pt-logo img { max-height: 46px; max-width: 100%; width: auto; }
+.s-people .pt-logo img[src*="emirates"] { max-height: 60px; }
+.s-people .pt-logo img[src*="dxs"] { max-height: 58px; }
+.s-people .pt figcaption { font-size: 10.5px; letter-spacing: .14em; color: var(--paper-2); }
+.s-people .crew { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+.s-people .st { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding-top: 6px; }
+.s-people .st .ph { position: relative; width: 112px; height: 112px; margin-bottom: 6px; border-radius: 50%; padding: 4px; }
+.s-people .st .ph::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from var(--a, 0deg), var(--acc) 0 22%, transparent 22% 50%, var(--ember) 50% 60%, transparent 60%); animation: ring 9s linear infinite; }
+.s-people .st:nth-child(even) .ph::before { animation-direction: reverse; }
+@property --a { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+@keyframes ring { to { --a: 360deg; } }
+.s-people .st .ph img, .s-people .st .ph .ini { position: relative; display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid var(--ink); }
+.s-people .st .ph .ini { display: grid; place-items: center; background: radial-gradient(circle at 30% 25%, #1b2a3a, #0b1018); font-family: var(--display); font-weight: 600; font-size: 38px; font-stretch: 110%; color: var(--acc); }
+.s-people .st b { font-family: var(--display); font-weight: 600; font-size: 23px; letter-spacing: -.01em; color: var(--paper); line-height: 1.1; }
+.s-people .st p { margin: 0; font-size: 15px; line-height: 1.45; color: var(--paper-2); max-width: 17em; }
+.s-people .st span { font-size: 10px; letter-spacing: .16em; color: var(--acc); }
+.s-people .sup { margin-top: auto; font-size: 12px; line-height: 1.7; color: var(--paper-2); letter-spacing: .03em; border-top: 1px solid var(--line-2); padding-top: 14px; }
+.s-people .sup span { color: var(--acc); letter-spacing: .18em; margin-right: 14px; }
+.s-people .sup em { font-style: normal; white-space: nowrap; }
+.s-people .sup i { font-style: normal; color: var(--mute); margin: 0 6px; }
+.who .people .nm + br { display: none; }

@@ -26,6 +26,8 @@ Push this folder to a GitHub repo, then go to Settings → Pages → Source: **G
 
 Logos: Dubai AI Festival and American University in Dubai (School of Engineering), used for the AUD showcase at the festival. Project figures and photos (EV station, MRI, hippocampus viewer, HVAC building, ship, SKMC building, MSAI flyer) come from the students' own slides and papers.
 
+Student portraits and partner logos (SEHA · Sheikh Khalifa Medical City, GE Vernova, Emirates, Dubai South) come from the project update document supplied by the supervisors.
+
 Background photos from Wikimedia Commons:
 
 - `pv-solar.webp`: USAF, Public domain, <https://commons.wikimedia.org/wiki/File:Nellis_AFB_Solar_panels.jpg>
@@ -34,7 +36,7 @@ Background photos from Wikimedia Commons:
 - `ckd-lab.webp`: U.S. Air Force photo by Airman 1st Class David S. Calcote, Public domain, <https://commons.wikimedia.org/wiki/File:374_MDG_enhances_operational_readiness_at_Yokota_(9003485).jpg>
 - `ecg-echo.webp`: Petty Officer 1st Class James Stenberg, Public domain, <https://commons.wikimedia.org/wiki/File:Vital_signs_monitor_display.jpg>
 - `mangroves-uae.webp`: Sendamuse, CC BY-SA 4.0, <https://commons.wikimedia.org/wiki/File:Jubail_Horizon_at_the_Park.jpg>
-- `dxb-aircraft.webp`: Andy Mabbett, CC BY-SA 4.0, <https://commons.wikimedia.org/wiki/File:Dubai_International_Airport_-_2024-10-24_-_Andy_Mabbett_-_54.jpg>
+- `emirates-a380.webp`: Lasse Fuss, CC BY-SA 3.0, <https://commons.wikimedia.org/wiki/File:Emirates_A380_A6-EDM.jpg>
 - `cctv-camera.webp`: EFF, CC BY 3.0, <https://commons.wikimedia.org/wiki/File:A_close-up_of_the_cameras_and_sensors_of_a_Remote_Video_Surveillance_System_(RVSS)_in_Nogales,_AZ_(2).jpg>
 - `container-port-jebelali.webp`: Imre Solt, CC BY-SA 3.0, <https://commons.wikimedia.org/wiki/File:Jebel_Ali_Port_2_Imresolt.jpg>
 - `ev-charging.webp`: Ivan Radic, CC BY 2.0, <https://commons.wikimedia.org/wiki/File:Electric_car_charging_(9213).jpg>
