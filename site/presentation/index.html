@@ -17,7 +17,7 @@
 <header class="chrome-top">
   <div class="brand"><img class="lg-daif" src="../assets/img/daif.svg" alt="Dubai AI Festival"><i class="lg-sep"></i><img class="lg-aud" src="../assets/img/aud-logo-on-dark.png" alt="American University in Dubai"></div>
   <div class="tracks mono" aria-hidden="true">
-    <span class="t t-ug">UNDERGRADUATE</span><span class="t-sep"></span><span class="t t-g">GRADUATE</span>
+    <span class="t t-ug">UNDERGRADUATE</span><span class="t-sep"></span><span class="t t-g">GRADUATE</span><span class="t-sep t-sep2"></span><span class="t t-f">FACULTY</span>
   </div>
 </header>
 <footer class="chrome-bottom">
@@ -49,9 +49,9 @@
 <section class="slide s-tracks" data-track="x" data-autoslide="13000" data-viz="tracks">
   <div class="half half-ug">
     <div class="tag mono" data-in>TRACK A · UNDERGRADUATE</div>
-    <div class="big" data-in><b data-count="7">0</b><span>research papers<br>with faculty</span></div>
+    <div class="big" data-in><b data-count="9">0</b><span>research projects<br>with faculty</span></div>
     <h3 data-in>Bachelor of Science<br><em>in Computer Engineering</em></h3>
-    <p data-in>Undergraduates co-author peer-review submissions with faculty, from MRI and EEG analysis to FPGA accelerators and climate tools.</p>
+    <p data-in>Undergraduates co-author peer-review submissions and build senior-design systems with faculty, from MRI and EEG analysis to FPGA accelerators, smart grids and climate tools.</p>
     <ul class="chips mono" data-in><li>Medical imaging</li><li>Brain signals</li><li>Edge hardware</li><li>Explainable AI</li><li>Climate</li></ul>
   </div>
   <div class="divider"><span></span></div>
@@ -494,6 +494,113 @@
       <g class="links"></g><g class="packets"></g><g class="nodes"></g>
     </svg>
     <div class="rewards mono"><span>F1 experience</span><span>Lounge pass</span><span>Cashback</span></div>
+  </div>
+</section>
+
+<!-- UG · SMARTGRID-XAI -->
+<section class="slide proj flip" data-track="ug" data-viz="sgx">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>UNDERGRADUATE · SENIOR DESIGN PROJECT</div>
+    <h2 data-in>When the grid misbehaves: a fault, <em>or an attack?</em></h2>
+    <div class="ptitle" data-in>SmartGrid-XAI: Explainable AI for Smart-Grid Anomaly Detection and Cyber-Physical Event Analysis</div>
+    <p class="lede" data-in>Grid measurements feed models that flag abnormal events. SHAP and LIME then show which readings drove each decision, so an operator can tell a physical fault from data forged by an attacker, and see what would have to change.</p>
+    <div class="metrics">
+      <div class="m" data-in><b data-count="8">0</b><span>models compared, forest to CNN-LSTM</span></div>
+      <div class="m" data-in><b data-count="3">0</b><span>levels of explanation</span></div>
+      <div class="m" data-in><b data-count="12" data-suffix=" V">0</b><span>safe lab prototype, ESP32</span></div>
+    </div>
+    <div class="who" data-in><div class="people mono"><b class="nm">Younis Almarzooqi · Marc Kalfian · Sultan Alsalman · Mohammad Bin Rais · Mohammad Alsuwaidi</b><br><span>Supervisor: Dr. Vinod Pangracious · Computer &amp; Electrical Engineering</span></div></div>
+  </div>
+  <div class="viz viz-sgx">
+    <div class="dash ticks">
+      <div class="dash-h mono"><span>SMARTGRID-XAI · OPERATOR VIEW</span><span class="live">CONCEPT</span></div>
+      <canvas class="wave"></canvas>
+      <div class="dash-row">
+        <div class="ev">
+          <span class="mono">PREDICTED EVENT</span>
+          <b class="ev-name">Voltage sag</b>
+          <div class="diag mono"><i></i><span class="ev-diag">PHYSICAL DISTURBANCE</span></div>
+        </div>
+        <div class="shap">
+          <span class="mono">WHY · SHAP ATTRIBUTION</span>
+          <ul class="mono"></ul>
+        </div>
+      </div>
+      <div class="cf mono"><span>WHAT-IF</span><p class="ev-cf"></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY · DR. MUHAMMAD FAHAD ZIA -->
+<section class="slide proj fac" data-track="f" data-viz="fz">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>FACULTY RESEARCH · SMART GRIDS</div>
+    <h2 data-in>Grids that forecast, <em>defend</em> and optimise themselves.</h2>
+    <div class="fprojects">
+      <div class="fp" data-in><span class="mono">PROJECT 01</span><b>AI for Smart Grid Load Forecasting and Cybersecurity</b><p>LSTM, BiLSTM, ConvLSTM, variational autoencoders and attention forecast load hours ahead, with explainable AI on top. Federated learning spots false-data-injection attacks across the grid.</p></div>
+      <div class="fp" data-in><span class="mono">PROJECT 02</span><b>AI-Driven Intelligent Energy Management and Optimization</b><p>Reinforcement learning schedules microgrids, batteries and EV charging and trades energy. A Deep Q-Network decides when each battery charges or discharges.</p></div>
+    </div>
+    <div class="who" data-in><img class="avatar" src="../assets/img/fac-muhammad-fahad-zia.webp" alt="Dr. Muhammad Fahad Zia"><div class="people mono"><b class="nm">Dr. Muhammad Fahad Zia</b><br><span>Faculty · School of Engineering · Project 02 team: the EV AI Lab undergraduates</span></div></div>
+  </div>
+  <div class="viz viz-fz">
+    <figure class="paper ticks"><img src="../assets/img/fz-xae-convlstm.webp" alt="Proposed XAE-ConvLSTM load forecasting pipeline: data collection, preprocessing, autoencoder and ConvLSTM, evaluation and SHAP explanation"><figcaption class="mono">PROJECT 01 · PROPOSED XAE–ConvLSTM PIPELINE</figcaption></figure>
+    <div class="grid-live ticks">
+      <div class="gl-h mono"><span><i class="k-act"></i>MEASURED LOAD</span><span><i class="k-fc"></i>FORECAST</span><span class="flag">FALSE DATA FLAGGED</span></div>
+      <canvas class="load"></canvas>
+      <div class="batt mono"><span class="bl">PROJECT 02 · DQN BATTERY</span><div class="cell"><i></i></div><b class="act">CHARGE</b><span class="soc">SOC 40%</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- UG · EV AI LAB -->
+<section class="slide proj flip" data-track="ug" data-viz="evlab">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>UNDERGRADUATE · STUDENT PROJECT</div>
+    <h2 data-in>An EV-charging assistant that runs on a <em>local</em> LLM.</h2>
+    <div class="ptitle" data-in>EV AI Lab · part of AI-Driven Intelligent Energy Management in Smart Grids</div>
+    <p class="lede" data-in>Ask where to charge and the assistant queries a UAE charger backend, then explains distance, charger type and connectors. The team benchmarked four open models running locally on accuracy, reasoning, tool use and speed.</p>
+    <div class="metrics">
+      <div class="m" data-in><b data-count="93.3" data-dec="1" data-suffix="%">0</b><span>accuracy, all four models</span></div>
+      <div class="m" data-in><b data-count="0">0</b><span>hallucinated chargers</span></div>
+      <div class="m" data-in><b data-count="80">0</b><span>evaluation runs</span></div>
+    </div>
+    <div class="who" data-in><div class="people mono"><b class="nm">Abaan Ahmed · Mohammed Almuzaki · Mohammad Almheiri · Amirali Tamizi Horzadeh</b><br><span>With Dr. Muhammad Fahad Zia · Ollama · Llama 3 · Mistral · Gemma · Phi</span></div></div>
+  </div>
+  <div class="viz viz-evlab">
+    <figure class="shot ticks"><div class="bar mono"><i></i><i></i><i></i><span>EV AI LAB · UAE · LOCAL LLM</span></div><img src="../assets/img/ev-ai-lab.webp" alt="EV AI Lab model evaluation dashboard comparing llama3, mistral, gemma and phi"></figure>
+    <div class="race ticks">
+      <div class="race-h mono"><span class="metric">REASONING</span><span class="q">20 QUERIES PER MODEL</span></div>
+      <div class="rows"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY · DR. RACHID ZEGHLACHE -->
+<section class="slide proj fac" data-track="f" data-viz="rz">
+  <div class="meta">
+    <div class="tag mono" data-in><i></i>FACULTY RESEARCH · ICSPIS 2026</div>
+    <h2 data-in>Same scan, two languages, <em>two different answers</em>.</h2>
+    <div class="ptitle" data-in>Language Changes the Answer, Not the Evidence: An Arabic–English XAI Audit of MedGemma Against Voxel-Level Organ Segmentation</div>
+    <p class="lede" data-in>A medical vision-language model is asked, in Arabic and in English, whether an organ is visible on the same CT or MRI slice. Arabic says yes three times as often. Yet the box the model draws barely moves between languages and almost never covers the organ.</p>
+    <div class="metrics">
+      <div class="m" data-in><b data-count="83.2" data-dec="1" data-suffix="%">0</b><span>"visible" in Arabic</span></div>
+      <div class="m" data-in><b data-count="27.9" data-dec="1" data-suffix="%">0</b><span>"visible" in English</span></div>
+      <div class="m" data-in><b data-count="0.03" data-dec="2">0</b><span>box overlap with the organ (IoU)</span></div>
+    </div>
+    <div class="who" data-in><img class="avatar" src="../assets/img/fac-rachid-zeghlache.webp" alt="Dr. Rachid Youven Zeghlache"><div class="people mono"><b class="nm">Dr. Rachid Youven Zeghlache</b><br><span>7,548 evaluations · 1,567 patients · 13 organs · Dubai RDI Programme, “AI Pathologist for Diverse Medical Diagnosis”</span></div></div>
+  </div>
+  <div class="viz viz-rz">
+    <div class="scanbox ticks">
+      <img src="../assets/img/rz-mri-liver.webp" alt="Abdominal MRI slice with the liver outlined in green">
+      <svg viewBox="0 0 1000 1000" preserveAspectRatio="none"><rect class="bx bx-ar" x="120" y="140" width="690" height="720"/><rect class="bx bx-en" x="170" y="110" width="700" height="770"/></svg>
+      <span class="lab mono"><i></i>LIVER · VOXEL-LEVEL GROUND TRUTH</span>
+      <span class="iou mono">AR ↔ EN boxes · IoU 0.76<br>box ↔ liver · IoU 0.03</span>
+    </div>
+    <div class="asks">
+      <div class="ask ask-ar ticks"><span class="mono">ARABIC PROMPT</span><p dir="rtl" lang="ar">حدد ما إذا كانت البنية التشريحية «الكبد» مرئية في هذه الصورة.</p><div class="ans"><b class="mono">VISIBLE</b><div class="mtr"><i style="--v:.832"></i></div><em class="mono">83.2%</em></div></div>
+      <div class="ask ask-en ticks"><span class="mono">ENGLISH PROMPT</span><p>Decide whether the anatomical structure “liver” is visible in this image.</p><div class="ans"><b class="mono">VISIBLE</b><div class="mtr"><i style="--v:.279"></i></div><em class="mono">27.9%</em></div></div>
+      <div class="verdict mono">The answers disagree on <b>59.4%</b> of identical images</div>
+    </div>
   </div>
 </section>
 

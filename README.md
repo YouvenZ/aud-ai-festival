@@ -26,7 +26,7 @@ Push this folder to a GitHub repo, then go to Settings → Pages → Source: **G
 
 Logos: Dubai AI Festival and American University in Dubai (School of Engineering), used for the AUD showcase at the festival. Project figures and photos (EV station, MRI, hippocampus viewer, HVAC building, ship, SKMC building, MSAI flyer) come from the students' own slides and papers.
 
-Student portraits and partner logos (SEHA · Sheikh Khalifa Medical City, GE Vernova, Emirates, Dubai South) come from the project update document supplied by the supervisors.
+Student portraits and partner logos (SEHA · Sheikh Khalifa Medical City, GE Vernova, Emirates, Dubai South) come from the project update document supplied by the supervisors. Faculty portraits, the XAE–ConvLSTM diagram, the EV AI Lab screenshot and the MRI slice (from the ICSPIS 2026 paper) were supplied by the faculty. Arabic text uses Noto Sans Arabic (SIL Open Font License).
 
 Background photos from Wikimedia Commons:
 

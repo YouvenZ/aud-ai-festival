@@ -645,6 +645,140 @@
     cycle();
   };
 
+  /* UG · SmartGrid-XAI: waveform → event → SHAP → what-if, alternating physical and cyber scenarios */
+  V.sgx = (s, run) => {
+    const dash = $(".dash", s), c = $(".wave", s), ul = $(".shap ul", s);
+    const name = $(".ev-name", s), diag = $(".ev-diag", s), cf = $(".ev-cf", s);
+    const F = ["Voltage", "Current", "Active power", "Reactive power", "Frequency", "Phase angle"];
+    const SC = [
+      { name: "Voltage sag", diag: "PHYSICAL DISTURBANCE", cyber: false, w: [0.92, 0.71, 0.34, 0.18, 0.08, 0.05],
+        cf: "Raise voltage by 0.08 p.u. and the event reads as normal operation." },
+      { name: "False data injection", diag: "CYBER-INDUCED ANOMALY", cyber: true, w: [0.38, 0.12, 0.44, 0.41, 0.36, 0.47],
+        cf: "Attribution is spread across unrelated channels: inspect the sensor feed, not the line." },
+    ];
+    if (!ul.children.length) F.forEach((f) => { const li = document.createElement("li"); li.innerHTML = `<span>${f}</span><span class="b"><i></i></span><em>0.00</em>`; ul.appendChild(li); });
+    const lis = $$("li", ul);
+    let k = -1, t0 = 0;
+    const show = (i, t) => {
+      k = i; t0 = t; const sc = SC[i];
+      dash.classList.toggle("cyber", sc.cyber);
+      name.textContent = sc.name; diag.textContent = sc.diag; cf.textContent = "";
+      lis.forEach((li) => { li.querySelector("i").style.setProperty("--w", 0); li.querySelector("em").textContent = "0.00"; });
+      run.after(1500, () => { if (k !== i) return; lis.forEach((li, j) => run.after(j * 120, () => { li.querySelector("i").style.setProperty("--w", sc.w[j]); li.querySelector("em").textContent = sc.w[j].toFixed(2); })); });
+      run.after(2800, () => { if (k === i) cf.textContent = sc.cf; });
+    };
+    run.loop((t) => {
+      const i = Math.floor(t / 7) % 2;
+      if (i !== k) show(i, t);
+      const { ctx, w, h } = fitCanvas(c); if (!w) return;
+      const p = clamp((t - t0) / 1.4, 0, 1), cyber = SC[k].cyber;
+      ctx.clearRect(0, 0, w, h);
+      ctx.strokeStyle = "rgba(236,232,223,.08)"; ctx.lineWidth = 1;
+      for (let y = 0; y <= 4; y++) { ctx.beginPath(); ctx.moveTo(0, (h / 4) * y); ctx.lineTo(w, (h / 4) * y); ctx.stroke(); }
+      const ev0 = w * 0.48, ev1 = w * 0.74;
+      ctx.fillStyle = cyber ? "rgba(255,61,90,.10)" : "rgba(255,106,61,.10)"; ctx.fillRect(ev0, 0, (ev1 - ev0) * p, h);
+      const draw = (ph, col, amp0) => {
+        ctx.beginPath();
+        for (let x = 0; x <= w; x += 2) {
+          const inEv = x > ev0 && x < ev1;
+          let a = amp0;
+          if (inEv && !cyber) a *= 0.55;
+          let y = h / 2 + Math.sin(x / 26 + ph + t * 2.2) * a * (h * 0.36);
+          if (inEv && cyber && ph === 0) y += (Math.floor(x / 14) % 2 ? -1 : 1) * h * 0.12 + h * 0.08;
+          x ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+        }
+        ctx.strokeStyle = col; ctx.lineWidth = 1.6; ctx.stroke();
+      };
+      draw(0, "#ff6a3d", 1); draw(2.09, "rgba(236,232,223,.55)", 1); draw(4.19, "rgba(143,216,255,.55)", 1);
+      ctx.fillStyle = cyber ? "#ff3d5a" : "#ff6a3d"; ctx.font = "11px 'IBM Plex Mono'"; ctx.fillText(cyber ? "INJECTED READINGS · PHASE A" : "SAG · ALL PHASES", ev0 + 8, 16);
+    });
+  };
+
+  /* FACULTY · Fahad Zia: load forecast with a false-data spike, DQN battery following price */
+  V.fz = (s, run) => {
+    const c = $(".load", s), box = $(".grid-live", s), cell = $(".cell", s), act = $(".batt .act", s), soc = $(".batt .soc", s);
+    const load = (hr) => 0.42 + 0.22 * Math.exp(-Math.pow((hr - 9) / 2.2, 2)) + 0.34 * Math.exp(-Math.pow((hr - 19.5) / 2.6, 2)) + 0.03 * Math.sin(hr * 3.1);
+    const fc = (hr) => 0.42 + 0.21 * Math.exp(-Math.pow((hr - 9.1) / 2.3, 2)) + 0.33 * Math.exp(-Math.pow((hr - 19.4) / 2.6, 2));
+    let socV = 0.4;
+    run.loop((t) => {
+      const { ctx, w, h } = fitCanvas(c); if (!w) return;
+      const now = ((t % 14) / 12) * 24, X = (hr) => (hr / 24) * w, Y = (v) => h - 10 - v * (h - 24);
+      ctx.clearRect(0, 0, w, h);
+      ctx.strokeStyle = "rgba(236,232,223,.07)";
+      for (let hr = 0; hr <= 24; hr += 3) { ctx.beginPath(); ctx.moveTo(X(hr), 0); ctx.lineTo(X(hr), h); ctx.stroke(); }
+      ctx.fillStyle = "#7d828c"; ctx.font = "10px 'IBM Plex Mono'";
+      for (let hr = 0; hr < 24; hr += 6) ctx.fillText(String(hr).padStart(2, "0") + ":00", X(hr) + 4, h - 2);
+      // forecast runs 3 h ahead of "now"
+      ctx.setLineDash([6, 5]); ctx.beginPath();
+      for (let hr = 0; hr <= Math.min(24, now + 3); hr += 0.1) { const y = Y(fc(hr)); hr ? ctx.lineTo(X(hr), y) : ctx.moveTo(X(hr), y); }
+      ctx.strokeStyle = "#f2c35b"; ctx.lineWidth = 2; ctx.stroke(); ctx.setLineDash([]);
+      const atk = (hr) => (hr > 13 && hr < 15 ? 0.26 * Math.sin(((hr - 13) / 2) * Math.PI) : 0);
+      ctx.beginPath();
+      for (let hr = 0; hr <= Math.min(24, now); hr += 0.1) { const y = Y(load(hr) + atk(hr)); hr ? ctx.lineTo(X(hr), y) : ctx.moveTo(X(hr), y); }
+      ctx.strokeStyle = "#ece8df"; ctx.lineWidth = 1.8; ctx.stroke();
+      const alert = now > 13.3;
+      if (alert) { ctx.fillStyle = "rgba(255,61,90,.13)"; ctx.fillRect(X(13), 0, X(Math.min(now, 15)) - X(13), h - 14); }
+      box.classList.toggle("alert", alert && now < 18);
+      if (now <= 24) { ctx.fillStyle = "#f2c35b"; ctx.beginPath(); ctx.arc(X(now), Y(load(now) + atk(now)), 4, 0, 7); ctx.fill(); }
+      // DQN: charge when demand is low, discharge into the evening peak
+      const d = fc(now), a = d < 0.5 ? "CHARGE" : d > 0.62 ? "DISCHARGE" : "HOLD";
+      socV = clamp(socV + (a === "CHARGE" ? 0.004 : a === "DISCHARGE" ? -0.005 : 0), 0.1, 0.95);
+      cell.style.setProperty("--soc", socV.toFixed(3)); act.textContent = a; soc.textContent = `SOC ${Math.round(socV * 100)}%`;
+    });
+  };
+
+  /* UG · EV AI Lab: four local models race on each metric from the team's evaluation */
+  V.evlab = (s, run) => {
+    const rows = $(".rows", s), label = $(".race-h .metric", s);
+    const M = [
+      { n: "llama3", c: "#a78bfa", acc: 93.3, rea: 87.6, tool: 97.5, lat: 5.9 },
+      { n: "mistral", c: "#60a5fa", acc: 93.3, rea: 80.1, tool: 100, lat: 7.5 },
+      { n: "gemma", c: "#34d399", acc: 93.3, rea: 85.6, tool: 95, lat: 14.1 },
+      { n: "phi", c: "#ff6a3d", acc: 93.3, rea: 44.1, tool: 75, lat: 4.3 },
+    ];
+    const K = [
+      { k: "rea", l: "REASONING", f: (v) => v.toFixed(1) + "%", w: (v) => v / 100, hi: true },
+      { k: "tool", l: "TOOL USAGE", f: (v) => v.toFixed(1) + "%", w: (v) => v / 100, hi: true },
+      { k: "lat", l: "AVG LATENCY · LOWER IS BETTER", f: (v) => v.toFixed(1) + " s", w: (v) => v / 15, hi: false },
+      { k: "acc", l: "ACCURACY", f: (v) => v.toFixed(1) + "%", w: (v) => v / 100, hi: true },
+    ];
+    if (!rows.children.length) M.forEach((m) => {
+      const r = document.createElement("div"); r.className = "row"; r.style.setProperty("--c", m.c);
+      r.innerHTML = `<span class="nm2">${m.n}</span><span class="b"><i></i></span><em>—</em>`; rows.appendChild(r); m.el = r;
+    });
+    const els = $$(".row", rows);
+    const show = (i) => {
+      const q = K[i % K.length]; label.textContent = q.l;
+      const order = M.map((m, j) => j).sort((a, b) => q.hi ? M[b][q.k] - M[a][q.k] : M[a][q.k] - M[b][q.k]);
+      order.forEach((j, pos) => {
+        const el = els[j], v = M[j][q.k];
+        el.style.transform = `translateY(${pos * 47}px)`;
+        el.querySelector("i").style.setProperty("--w", clamp(q.w(v), 0, 1));
+        el.querySelector("em").textContent = q.f(v);
+        el.classList.toggle("best", pos === 0 && q.k !== "acc");
+      });
+    };
+    els.forEach((el, j) => { el.style.transform = `translateY(${j * 47}px)`; el.querySelector("i").style.setProperty("--w", 0); });
+    let i = 0; run.after(900, () => show(i)); run.every(3600, () => show(++i));
+  };
+
+  /* FACULTY · Rachid Zeghlache: ask in Arabic, then English, then compare the two boxes */
+  V.rz = (s, run) => {
+    const viz = $(".viz-rz", s), ar = $(".ask-ar", s), en = $(".ask-en", s), bar = $(".bx-ar", s), ben = $(".bx-en", s);
+    const reset = () => { viz.classList.remove("both"); [ar, en].forEach((a) => a.classList.remove("on", "done")); [bar, ben].forEach((b) => b.classList.remove("on")); };
+    const cycle = () => {
+      if (!run.alive) return;
+      reset();
+      run.after(600, () => { ar.classList.add("on"); });
+      run.after(1500, () => { ar.classList.add("done"); bar.classList.add("on"); });
+      run.after(3800, () => { ar.classList.remove("on"); en.classList.add("on"); });
+      run.after(4700, () => { en.classList.add("done"); ben.classList.add("on"); });
+      run.after(7000, () => { en.classList.remove("on"); ar.classList.add("done"); viz.classList.add("both"); });
+      run.after(12500, cycle);
+    };
+    cycle();
+  };
+
   V.tracks = () => {};
   V.tumor = () => {};
   V.close = () => {};
@@ -688,7 +822,7 @@
   const seg = $("#segments");
   slides.forEach((s) => {
     const i = document.createElement("i");
-    i.style.setProperty("--c", s.dataset.track === "ug" ? "var(--ember)" : s.dataset.track === "g" ? "var(--ion)" : "var(--paper)");
+    i.style.setProperty("--c", s.dataset.track === "ug" ? "var(--ember)" : s.dataset.track === "g" ? "var(--ion)" : s.dataset.track === "f" ? "var(--gold)" : "var(--paper)");
     seg.appendChild(i);
   });
   $("#total").textContent = String(slides.length).padStart(2, "0");
@@ -708,7 +842,7 @@
       if (i === idx) { void el.offsetWidth; el.style.setProperty("--dur", (+s.dataset.autoslide || DEFAULT_MS) + "ms"); el.classList.add("now"); }
     });
     const wipe = $("#wipe");
-    wipe.style.setProperty("--wc", s.dataset.track === "ug" ? "#ff6a3d" : s.dataset.track === "g" ? "#8fd8ff" : "#ece8df");
+    wipe.style.setProperty("--wc", s.dataset.track === "ug" ? "#ff6a3d" : s.dataset.track === "g" ? "#8fd8ff" : s.dataset.track === "f" ? "#f2c35b" : "#ece8df");
     wipe.classList.remove("go"); void wipe.offsetWidth; wipe.classList.add("go");
     counters(s, current);
     const v = V[s.dataset.viz];

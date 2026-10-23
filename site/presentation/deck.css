@@ -508,3 +508,113 @@ body[data-viz="field"] .qr-chip, body[data-viz="close"] .qr-chip { opacity: 0; }
 .s-people .sup em { font-style: normal; white-space: nowrap; }
 .s-people .sup i { font-style: normal; color: var(--mute); margin: 0 6px; }
 .who .people .nm + br { display: none; }
+
+/* ───────── faculty track ───────── */
+section[data-track="f"] { --acc: var(--gold); --acc-soft: var(--gold-soft); }
+.tracks .t-sep2::after { transform: translateX(-100%); }
+body[data-track="f"] .t-f { color: var(--gold); opacity: 1; }
+body[data-track="f"] .t-sep2::after { background: var(--gold); transform: translateX(100%); }
+body[data-track="f"] .t-sep:not(.t-sep2)::after { transform: translateX(200%); }
+body[data-track="ug"] .t-sep2::after, body[data-track="g"] .t-sep2::after { transform: translateX(-100%); }
+.fprojects { display: flex; flex-direction: column; gap: 14px; }
+.fp { padding: 16px 20px; border: 1px solid var(--line-2); border-left: 2px solid var(--gold); background: linear-gradient(90deg, var(--gold-soft), transparent 70%); }
+.fp span { font-size: 10.5px; letter-spacing: .2em; color: var(--gold); }
+.fp b { display: block; margin: 6px 0 6px; font-family: var(--display); font-weight: 600; font-size: 20px; line-height: 1.25; color: var(--paper); }
+.fp p { margin: 0; font-size: 15.5px; line-height: 1.5; color: var(--paper-2); }
+
+/* ───────── SmartGrid-XAI dashboard ───────── */
+.viz-sgx { display: flex; align-items: center; }
+.dash { width: 100%; border: 1px solid var(--line-2); background: rgba(13,17,23,.85); padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 18px; }
+.dash-h { display: flex; justify-content: space-between; font-size: 11px; letter-spacing: .16em; color: var(--paper-2); }
+.dash-h .live { color: var(--ember); border: 1px solid var(--ember); padding: 2px 8px; font-size: 9.5px; }
+.dash .wave { width: 100%; height: 210px; display: block; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.dash-row { display: grid; grid-template-columns: 250px 1fr; gap: 26px; }
+.dash .ev { display: flex; flex-direction: column; gap: 10px; }
+.dash .ev > span, .dash .shap > span { font-size: 10px; letter-spacing: .18em; color: var(--mute); }
+.dash .ev-name { font-family: var(--display); font-weight: 600; font-size: 34px; line-height: 1.05; color: var(--paper); transition: opacity .4s; }
+.dash .diag { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: .14em; padding: 8px 12px; border: 1px solid currentColor; align-self: flex-start; color: var(--ion); transition: color .5s; }
+.dash .diag i { width: 8px; height: 8px; border-radius: 50%; background: currentColor; box-shadow: 0 0 10px currentColor; }
+.dash.cyber .diag { color: var(--alarm); }
+.dash .shap ul { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+.dash .shap li { display: grid; grid-template-columns: 120px 1fr 44px; align-items: center; gap: 10px; font-size: 11px; color: var(--paper-2); }
+.dash .shap li .b { height: 9px; background: var(--line); position: relative; }
+.dash .shap li .b i { position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--w, 0) * 100%); background: var(--ember); transition: width .9s var(--ease-out); }
+.dash.cyber .shap li .b i { background: var(--alarm); }
+.dash .shap li em { font-style: normal; text-align: right; color: var(--mute); }
+.dash .cf { display: flex; gap: 16px; align-items: baseline; border-top: 1px solid var(--line); padding-top: 14px; }
+.dash .cf span { font-size: 10px; letter-spacing: .18em; color: var(--ember); }
+.dash .cf p { margin: 0; font-size: 13px; color: var(--paper); letter-spacing: .02em; }
+
+/* ───────── Dr. Fahad Zia ───────── */
+.viz-fz { display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+.viz-fz .paper { margin: 0; background: #fff; padding: 12px 12px 30px; position: relative; transform: rotate(-1deg); box-shadow: 0 30px 60px -20px rgba(0,0,0,.85); }
+.viz-fz .paper img { display: block; width: 100%; height: 330px; object-fit: contain; }
+.viz-fz .paper figcaption { position: absolute; left: 14px; bottom: 9px; font-size: 10px; letter-spacing: .14em; color: #5b5f66; }
+.grid-live { border: 1px solid var(--line-2); background: rgba(13,17,23,.8); padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; }
+.gl-h { display: flex; gap: 24px; font-size: 10.5px; letter-spacing: .14em; color: var(--paper-2); align-items: center; }
+.gl-h i { display: inline-block; width: 18px; height: 2px; margin-right: 8px; vertical-align: middle; }
+.gl-h .k-act { background: var(--paper); } .gl-h .k-fc { background: var(--gold); }
+.gl-h .flag { margin-left: auto; color: var(--alarm); border: 1px solid var(--alarm); padding: 3px 8px; opacity: 0; transition: opacity .3s; }
+.grid-live.alert .flag { opacity: 1; }
+.grid-live .load { width: 100%; height: 170px; display: block; }
+.batt { display: flex; align-items: center; gap: 16px; font-size: 11px; letter-spacing: .12em; color: var(--paper-2); border-top: 1px solid var(--line); padding-top: 12px; }
+.batt .bl { color: var(--gold); }
+.batt .cell { width: 120px; height: 22px; border: 1px solid var(--line-2); padding: 2px; position: relative; }
+.batt .cell::after { content: ""; position: absolute; right: -6px; top: 6px; width: 4px; height: 8px; background: var(--line-2); }
+.batt .cell i { display: block; height: 100%; width: calc(var(--soc, .4) * 100%); background: var(--gold); }
+.batt .act { color: var(--paper); font-weight: 500; min-width: 90px; }
+
+/* ───────── EV AI Lab ───────── */
+.viz-evlab { display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+.viz-evlab .shot { margin: 0; border: 1px solid var(--line-2); background: #0b0f15; box-shadow: 0 30px 60px -24px rgba(0,0,0,.9); overflow: hidden; }
+.viz-evlab .shot .bar { display: flex; align-items: center; gap: 7px; padding: 9px 12px; border-bottom: 1px solid var(--line); font-size: 10px; letter-spacing: .14em; color: var(--mute); }
+.viz-evlab .shot .bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--line-2); }
+.viz-evlab .shot .bar span { margin-left: 10px; }
+.viz-evlab .shot img { display: block; width: 100%; height: 300px; object-fit: cover; object-position: top left; }
+.race { border: 1px solid var(--line-2); background: rgba(13,17,23,.8); padding: 18px 22px; }
+.race-h { display: flex; justify-content: space-between; font-size: 11px; letter-spacing: .16em; color: var(--mute); margin-bottom: 14px; }
+.race-h .metric { color: var(--ember); }
+.race .rows { position: relative; height: 188px; }
+.race .row { position: absolute; left: 0; right: 0; height: 38px; display: grid; grid-template-columns: 96px 1fr 70px; align-items: center; gap: 14px; transition: transform .8s var(--ease-io); }
+.race .row .nm2 { font-family: var(--mono); font-size: 13px; color: var(--paper); }
+.race .row .b { height: 14px; background: var(--line); position: relative; }
+.race .row .b i { position: absolute; inset: 0 auto 0 0; width: calc(var(--w, 0) * 100%); background: var(--c); transition: width .9s var(--ease-out); }
+.race .row em { font-style: normal; font-family: var(--mono); font-size: 14px; color: var(--paper); text-align: right; }
+.race .row.best .nm2::after { content: " ★"; color: var(--signal); }
+
+/* ───────── Dr. Rachid Zeghlache ───────── */
+.viz-rz { display: grid; grid-template-columns: 430px 1fr; gap: 28px; align-items: center; }
+.scanbox { position: relative; width: 430px; height: 430px; border: 1px solid var(--line-2); background: #000; }
+.scanbox img { width: 100%; height: 100%; display: block; }
+.scanbox svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.scanbox .bx { fill: none; stroke-width: 7; stroke-dasharray: 2900; stroke-dashoffset: 2900; transition: stroke-dashoffset 1.4s var(--ease-io), opacity .5s; vector-effect: non-scaling-stroke; }
+.scanbox .bx { stroke-width: 2.5; }
+.scanbox .bx-ar { stroke: var(--ion); } .scanbox .bx-en { stroke: var(--ember); }
+.scanbox .bx.on { stroke-dashoffset: 0; }
+.scanbox .lab { position: absolute; left: 10px; top: 10px; font-size: 9.5px; letter-spacing: .14em; color: #39d98a; background: rgba(0,0,0,.6); padding: 4px 8px; }
+.scanbox .lab i { display: inline-block; width: 14px; height: 2px; background: #39d98a; margin-right: 8px; vertical-align: middle; }
+.scanbox .iou { position: absolute; left: 10px; bottom: 10px; font-size: 11px; line-height: 1.6; letter-spacing: .08em; color: var(--paper); background: rgba(7,9,13,.82); padding: 8px 12px; border-left: 2px solid var(--gold); opacity: 0; transition: opacity .6s; }
+.viz-rz.both .scanbox .iou { opacity: 1; }
+.asks { display: flex; flex-direction: column; gap: 14px; }
+.ask { border: 1px solid var(--line-2); padding: 14px 16px; background: rgba(13,17,23,.8); opacity: .45; transition: opacity .5s, border-color .5s; }
+.ask > span { font-size: 10px; letter-spacing: .18em; color: var(--mute); }
+.ask p { margin: 8px 0 12px; font-size: 16px; line-height: 1.5; color: var(--paper); }
+.ask p[lang="ar"] { font-family: "Noto Sans Arabic", var(--sans); font-size: 19px; line-height: 1.6; }
+.ask .ans { display: grid; grid-template-columns: 70px 1fr 56px; gap: 12px; align-items: center; font-size: 11px; }
+.ask .ans b { font-weight: 500; letter-spacing: .12em; color: var(--paper-2); }
+.ask .mtr { height: 10px; background: var(--line); position: relative; }
+.ask .mtr i { position: absolute; inset: 0 auto 0 0; width: 0; transition: width 1.2s var(--ease-out); }
+.ask-ar .mtr i { background: var(--ion); } .ask-en .mtr i { background: var(--ember); }
+.ask .ans em { font-style: normal; font-size: 15px; color: var(--paper); text-align: right; }
+.ask.on { opacity: 1; }
+.ask-ar.on { border-color: var(--ion); } .ask-en.on { border-color: var(--ember); }
+.ask.done .mtr i { width: calc(var(--v) * 100%); }
+.verdict { font-size: 12px; letter-spacing: .06em; color: var(--paper-2); padding: 10px 0 0; border-top: 1px solid var(--line); opacity: 0; transition: opacity .6s; }
+.verdict b { color: var(--gold); font-weight: 500; font-size: 15px; }
+.viz-rz.both .verdict { opacity: 1; }
+.fac .meta { gap: 22px; }
+.fac .meta h2 { font-size: 56px; }
+.fac .fp { padding: 13px 18px; }
+.fac .fp b { font-size: 18.5px; }
+.fac .fp p { font-size: 14.5px; line-height: 1.45; }
+.fac .who .avatar { box-shadow: 0 0 0 3px var(--ink), 0 0 0 4px var(--gold), 0 10px 30px -8px rgba(242,195,91,.4); }
