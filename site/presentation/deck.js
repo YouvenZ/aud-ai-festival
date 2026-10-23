@@ -658,6 +658,8 @@
     ];
     if (!ul.children.length) F.forEach((f) => { const li = document.createElement("li"); li.innerHTML = `<span>${f}</span><span class="b"><i></i></span><em>0.00</em>`; ul.appendChild(li); });
     const lis = $$("li", ul);
+    const parts = $$(".chain .part", s);
+    run.every(700, () => { const h = Math.floor(performance.now() / 700) % (parts.length + 2); parts.forEach((p, j) => p.classList.toggle("hot", j === h)); });
     let k = -1, t0 = 0;
     const show = (i, t) => {
       k = i; t0 = t; const sc = SC[i];
@@ -762,19 +764,46 @@
     let i = 0; run.after(900, () => show(i)); run.every(3600, () => show(++i));
   };
 
-  /* FACULTY · Rachid Zeghlache: ask in Arabic, then English, then compare the two boxes */
+  /* FACULTY · Rachid Zeghlache: probe the slice, ask in Arabic then English, compare, then the parser hazard */
   V.rz = (s, run) => {
     const viz = $(".viz-rz", s), ar = $(".ask-ar", s), en = $(".ask-en", s), bar = $(".bx-ar", s), ben = $(".bx-en", s);
-    const reset = () => { viz.classList.remove("both"); [ar, en].forEach((a) => a.classList.remove("on", "done")); [bar, ben].forEach((b) => b.classList.remove("on")); };
+    const heat = $(".heat", s), slides = $$(".sl", s), cname = $(".c-name", s), dots = $$(".c-dots i", s);
+    if (!heat.children.length) {
+      const r = rng(7);
+      for (let i = 0; i < 64; i++) { const c = document.createElement("i"); c.dataset.v = (Math.pow(r(), 2.2)).toFixed(3); heat.appendChild(c); }
+    }
+    const cells = $$("i", heat);
+    const type = (p, card, ms) => {
+      const txt = p.dataset.text; p.textContent = ""; card.classList.add("typing");
+      const n = [...txt].length, step = ms / n;
+      for (let i = 1; i <= n; i++) run.after(i * step, () => { p.textContent = [...txt].slice(0, i).join(""); if (i === n) card.classList.remove("typing"); });
+    };
+    let ci = 0;
+    const cohort = (i) => { slides.forEach((im, j) => im.classList.toggle("on", j === i)); dots.forEach((d, j) => d.classList.toggle("on", j === i)); cname.textContent = slides[i].dataset.c; };
+    const probe = (on) => {
+      viz.classList.toggle("probing", on);
+      cells.forEach((c, i) => run.after(on ? i * 18 : 0, () => {
+        const v = on ? +c.dataset.v : 0;
+        c.style.setProperty("--a", v); c.classList.toggle("hit", on && v >= 0.7);
+      }));
+    };
+    const reset = () => {
+      viz.classList.remove("both", "hz"); probe(false);
+      [ar, en].forEach((a) => { a.classList.remove("on", "done", "typing"); $(".a", a).textContent = ""; });
+      [bar, ben].forEach((b) => b.classList.remove("on"));
+    };
     const cycle = () => {
       if (!run.alive) return;
-      reset();
-      run.after(600, () => { ar.classList.add("on"); });
-      run.after(1500, () => { ar.classList.add("done"); bar.classList.add("on"); });
-      run.after(3800, () => { ar.classList.remove("on"); en.classList.add("on"); });
-      run.after(4700, () => { en.classList.add("done"); ben.classList.add("on"); });
-      run.after(7000, () => { en.classList.remove("on"); ar.classList.add("done"); viz.classList.add("both"); });
-      run.after(12500, cycle);
+      reset(); cohort(ci); ci = (ci + 1) % slides.length;
+      run.after(500, () => probe(true));
+      run.after(2600, () => probe(false));
+      run.after(2900, () => { ar.classList.add("on"); type($(".a", ar), ar, 1300); });
+      run.after(4400, () => { ar.classList.add("done"); bar.classList.add("on"); });
+      run.after(6000, () => { ar.classList.remove("on"); en.classList.add("on"); type($(".a", en), en, 1500); });
+      run.after(7700, () => { en.classList.add("done"); ben.classList.add("on"); });
+      run.after(9300, () => { en.classList.remove("on"); ar.classList.add("done"); viz.classList.add("both"); });
+      run.after(12300, () => viz.classList.add("hz"));
+      run.after(19000, cycle);
     };
     cycle();
   };

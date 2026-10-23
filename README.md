@@ -26,7 +26,7 @@ Push this folder to a GitHub repo, then go to Settings → Pages → Source: **G
 
 Logos: Dubai AI Festival and American University in Dubai (School of Engineering), used for the AUD showcase at the festival. Project figures and photos (EV station, MRI, hippocampus viewer, HVAC building, ship, SKMC building, MSAI flyer) come from the students' own slides and papers.
 
-Student portraits and partner logos (SEHA · Sheikh Khalifa Medical City, GE Vernova, Emirates, Dubai South) come from the project update document supplied by the supervisors. Faculty portraits, the XAE–ConvLSTM diagram, the EV AI Lab screenshot and the MRI slice (from the ICSPIS 2026 paper) were supplied by the faculty. Arabic text uses Noto Sans Arabic (SIL Open Font License).
+Student portraits and partner logos (SEHA · Sheikh Khalifa Medical City, GE Vernova, Emirates, Dubai South) come from the project update document supplied by the supervisors. Faculty portraits, the XAE–ConvLSTM diagram, the EV AI Lab screenshot and the CT/MRI slices (from the ICSPIS 2026 paper) were supplied by the faculty. SmartGrid-XAI prototype part images come from the team's proposal presentation. Arabic text uses Noto Sans Arabic (SIL Open Font License).
 
 Background photos from Wikimedia Commons:
 
@@ -36,6 +36,7 @@ Background photos from Wikimedia Commons:
 - `ckd-lab.webp`: U.S. Air Force photo by Airman 1st Class David S. Calcote, Public domain, <https://commons.wikimedia.org/wiki/File:374_MDG_enhances_operational_readiness_at_Yokota_(9003485).jpg>
 - `ecg-echo.webp`: Petty Officer 1st Class James Stenberg, Public domain, <https://commons.wikimedia.org/wiki/File:Vital_signs_monitor_display.jpg>
 - `mangroves-uae.webp`: Sendamuse, CC BY-SA 4.0, <https://commons.wikimedia.org/wiki/File:Jubail_Horizon_at_the_Park.jpg>
+- `substation-night.webp`: Unnerving duck, CC BY-SA 4.0, <https://commons.wikimedia.org/wiki/File:Substation_in_V%C3%A4%C3%A4ksy_at_night.jpg>
 - `emirates-a380.webp`: Lasse Fuss, CC BY-SA 3.0, <https://commons.wikimedia.org/wiki/File:Emirates_A380_A6-EDM.jpg>
 - `cctv-camera.webp`: EFF, CC BY 3.0, <https://commons.wikimedia.org/wiki/File:A_close-up_of_the_cameras_and_sensors_of_a_Remote_Video_Surveillance_System_(RVSS)_in_Nogales,_AZ_(2).jpg>
 - `container-port-jebelali.webp`: Imre Solt, CC BY-SA 3.0, <https://commons.wikimedia.org/wiki/File:Jebel_Ali_Port_2_Imresolt.jpg>

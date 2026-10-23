@@ -499,6 +499,7 @@
 
 <!-- UG · SMARTGRID-XAI -->
 <section class="slide proj flip" data-track="ug" data-viz="sgx">
+  <div class="photo" style="--img:url(../assets/img/substation-night.webp);--pos:center 60%;--b:.34" aria-hidden="true"><span class="credit mono">PHOTO · Unnerving duck · CC BY-SA 4.0 · WIKIMEDIA COMMONS</span></div>
   <div class="meta">
     <div class="tag mono" data-in><i></i>UNDERGRADUATE · SENIOR DESIGN PROJECT</div>
     <h2 data-in>When the grid misbehaves: a fault, <em>or an attack?</em></h2>
@@ -528,19 +529,28 @@
       </div>
       <div class="cf mono"><span>WHAT-IF</span><p class="ev-cf"></p></div>
     </div>
+    <div class="chain mono">
+      <figure class="part"><div class="pi"><img src="../assets/img/sgx-psu.webp" alt="Bench power supply showing 12.0 V and 0.50 A"></div><figcaption>12 V SOURCE</figcaption></figure>
+      <figure class="part"><div class="pi"><img src="../assets/img/sgx-rlc.webp" alt="Resistor, inductor and capacitor"></div><figcaption>RLC LOAD</figcaption></figure>
+      <figure class="part"><div class="pi"><img src="../assets/img/sgx-sensors.webp" alt="Current and voltage sensor modules"></div><figcaption>V / I SENSORS</figcaption></figure>
+      <figure class="part"><div class="pi"><img src="../assets/img/sgx-esp32.webp" alt="ESP32 microcontroller board"></div><figcaption>ESP32</figcaption></figure>
+      <figure class="part"><div class="pi"><img src="../assets/img/sgx-laptop.webp" alt="Laptop running the SmartGrid-XAI dashboard"></div><figcaption>XAI DASHBOARD</figcaption></figure>
+      <i class="spark"></i>
+    </div>
+    <div class="chain-cap mono">LAB PROTOTYPE · ISOLATED 12 V, NEVER CONNECTED TO MAINS · PARTS FROM THE TEAM'S PROPOSAL</div>
   </div>
 </section>
 
 <!-- FACULTY · DR. MUHAMMAD FAHAD ZIA -->
 <section class="slide proj fac" data-track="f" data-viz="fz">
   <div class="meta">
-    <div class="tag mono" data-in><i></i>FACULTY RESEARCH · SMART GRIDS</div>
+    <div class="tag mono" data-in><i></i>FACULTY RESEARCH · SMART GRIDS · TWO PROJECTS</div>
     <h2 data-in>Grids that forecast, <em>defend</em> and optimise themselves.</h2>
     <div class="fprojects">
       <div class="fp" data-in><span class="mono">PROJECT 01</span><b>AI for Smart Grid Load Forecasting and Cybersecurity</b><p>LSTM, BiLSTM, ConvLSTM, variational autoencoders and attention forecast load hours ahead, with explainable AI on top. Federated learning spots false-data-injection attacks across the grid.</p></div>
       <div class="fp" data-in><span class="mono">PROJECT 02</span><b>AI-Driven Intelligent Energy Management and Optimization</b><p>Reinforcement learning schedules microgrids, batteries and EV charging and trades energy. A Deep Q-Network decides when each battery charges or discharges.</p></div>
     </div>
-    <div class="who" data-in><img class="avatar" src="../assets/img/fac-muhammad-fahad-zia.webp" alt="Dr. Muhammad Fahad Zia"><div class="people mono"><b class="nm">Dr. Muhammad Fahad Zia</b><br><span>Faculty · School of Engineering · Project 02 team: the EV AI Lab undergraduates</span></div></div>
+    <div class="who" data-in><img class="avatar" src="../assets/img/fac-muhammad-fahad-zia.webp" alt="Dr. Muhammad Fahad Zia"><div class="people mono"><b class="nm">Dr. Muhammad Fahad Zia</b><br><span>Lead on both projects · School of Engineering · Project 02 team: the EV AI Lab undergraduates</span></div></div>
   </div>
   <div class="viz viz-fz">
     <figure class="paper ticks"><img src="../assets/img/fz-xae-convlstm.webp" alt="Proposed XAE-ConvLSTM load forecasting pipeline: data collection, preprocessing, autoencoder and ConvLSTM, evaluation and SHAP explanation"><figcaption class="mono">PROJECT 01 · PROPOSED XAE–ConvLSTM PIPELINE</figcaption></figure>
@@ -564,7 +574,7 @@
       <div class="m" data-in><b data-count="0">0</b><span>hallucinated chargers</span></div>
       <div class="m" data-in><b data-count="80">0</b><span>evaluation runs</span></div>
     </div>
-    <div class="who" data-in><div class="people mono"><b class="nm">Abaan Ahmed · Mohammed Almuzaki · Mohammad Almheiri · Amirali Tamizi Horzadeh</b><br><span>With Dr. Muhammad Fahad Zia · Ollama · Llama 3 · Mistral · Gemma · Phi</span></div></div>
+    <div class="who" data-in><div class="people mono"><b class="nm">Abaan Ahmed · Mohammed Almuzaki · Mohammad Almheiri · Amirali Tamizi Horzadeh</b><br><span>Faculty lead: Dr. Muhammad Fahad Zia · Ollama · Llama 3 · Mistral · Gemma · Phi</span></div></div>
   </div>
   <div class="viz viz-evlab">
     <figure class="shot ticks"><div class="bar mono"><i></i><i></i><i></i><span>EV AI LAB · UAE · LOCAL LLM</span></div><img src="../assets/img/ev-ai-lab.webp" alt="EV AI Lab model evaluation dashboard comparing llama3, mistral, gemma and phi"></figure>
@@ -576,30 +586,40 @@
 </section>
 
 <!-- FACULTY · DR. RACHID ZEGHLACHE -->
-<section class="slide proj fac" data-track="f" data-viz="rz">
+<section class="slide proj fac rz" data-track="f" data-viz="rz" data-autoslide="20000">
+  <div class="rz-glow" aria-hidden="true"></div>
   <div class="meta">
-    <div class="tag mono" data-in><i></i>FACULTY RESEARCH · ICSPIS 2026</div>
+    <div class="tag mono" data-in><i></i>FACULTY RESEARCH · MEDICAL AI<span class="badges"><span class="badge"><em>ACCEPTED</em>ICSPIS 2026</span><span class="badge"><em>FUNDED</em>DUBAI RDI</span></span></div>
     <h2 data-in>Same scan, two languages, <em>two different answers</em>.</h2>
     <div class="ptitle" data-in>Language Changes the Answer, Not the Evidence: An Arabic–English XAI Audit of MedGemma Against Voxel-Level Organ Segmentation</div>
-    <p class="lede" data-in>A medical vision-language model is asked, in Arabic and in English, whether an organ is visible on the same CT or MRI slice. Arabic says yes three times as often. Yet the box the model draws barely moves between languages and almost never covers the organ.</p>
+    <p class="lede" data-in>Google's medical vision-language model is asked, in Arabic and in English, whether an organ is visible on the very same CT or MRI slice. Arabic says yes three times as often. Yet where the model claims to look barely moves, and almost never lands on the organ.</p>
     <div class="metrics">
       <div class="m" data-in><b data-count="83.2" data-dec="1" data-suffix="%">0</b><span>"visible" in Arabic</span></div>
       <div class="m" data-in><b data-count="27.9" data-dec="1" data-suffix="%">0</b><span>"visible" in English</span></div>
       <div class="m" data-in><b data-count="0.03" data-dec="2">0</b><span>box overlap with the organ (IoU)</span></div>
     </div>
-    <div class="who" data-in><img class="avatar" src="../assets/img/fac-rachid-zeghlache.webp" alt="Dr. Rachid Youven Zeghlache"><div class="people mono"><b class="nm">Dr. Rachid Youven Zeghlache</b><br><span>7,548 evaluations · 1,567 patients · 13 organs · Dubai RDI Programme, “AI Pathologist for Diverse Medical Diagnosis”</span></div></div>
+    <div class="who" data-in><img class="avatar" src="../assets/img/fac-rachid-zeghlache.webp" alt="Dr. Rachid Youven Zeghlache"><div class="people mono"><b class="nm">Dr. Rachid Youven Zeghlache</b><br><span>Dubai RDI Programme grant 2025/DRDI0304 · “AI Pathologist for Diverse Medical Diagnosis”</span></div></div>
   </div>
   <div class="viz viz-rz">
-    <div class="scanbox ticks">
-      <img src="../assets/img/rz-mri-liver.webp" alt="Abdominal MRI slice with the liver outlined in green">
-      <svg viewBox="0 0 1000 1000" preserveAspectRatio="none"><rect class="bx bx-ar" x="120" y="140" width="690" height="720"/><rect class="bx bx-en" x="170" y="110" width="700" height="770"/></svg>
-      <span class="lab mono"><i></i>LIVER · VOXEL-LEVEL GROUND TRUTH</span>
-      <span class="iou mono">AR ↔ EN boxes · IoU 0.76<br>box ↔ liver · IoU 0.03</span>
+    <div class="scope">
+      <div class="scanbox ticks">
+        <img class="sl on" src="../assets/img/rz-mri-liver.webp" alt="Abdominal MRI slice with the liver outlined in green" data-c="TOTALSEGMENTATOR · MRI · 290 PATIENTS">
+        <img class="sl" src="../assets/img/rz-aa-ct.webp" alt="Abdominal CT slice with the liver outlined in green" data-c="ABDOMENATLAS · CT · 588 PATIENTS">
+        <img class="sl" src="../assets/img/rz-ts-ct.webp" alt="Abdominal CT slice with the liver outlined in green" data-c="TOTALSEGMENTATOR · CT · 689 PATIENTS">
+        <div class="heat" aria-hidden="true"></div>
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"><rect class="bx bx-ar" x="120" y="140" width="690" height="720"/><rect class="bx bx-en" x="170" y="110" width="700" height="770"/></svg>
+        <i class="scanline" aria-hidden="true"></i>
+        <span class="lab mono"><i></i>LIVER · VOXEL-LEVEL TRUTH</span>
+        <span class="probe mono">PROBE A · FEATURE ABLATION 8×8</span>
+        <span class="iou mono"><b>0.76</b> AR ↔ EN boxes<br><b class="bad">0.03</b> box ↔ liver</span>
+      </div>
+      <div class="cohort mono"><span class="c-name">TOTALSEGMENTATOR · MRI · 290 PATIENTS</span><span class="c-dots"><i class="on"></i><i></i><i></i></span></div>
     </div>
     <div class="asks">
-      <div class="ask ask-ar ticks"><span class="mono">ARABIC PROMPT</span><p dir="rtl" lang="ar">حدد ما إذا كانت البنية التشريحية «الكبد» مرئية في هذه الصورة.</p><div class="ans"><b class="mono">VISIBLE</b><div class="mtr"><i style="--v:.832"></i></div><em class="mono">83.2%</em></div></div>
-      <div class="ask ask-en ticks"><span class="mono">ENGLISH PROMPT</span><p>Decide whether the anatomical structure “liver” is visible in this image.</p><div class="ans"><b class="mono">VISIBLE</b><div class="mtr"><i style="--v:.279"></i></div><em class="mono">27.9%</em></div></div>
-      <div class="verdict mono">The answers disagree on <b>59.4%</b> of identical images</div>
+      <div class="ask ask-ar ticks"><span class="mono">ARABIC · SAME IMAGE</span><p class="q" dir="rtl" lang="ar">حدد ما إذا كانت البنية التشريحية «الكبد» مرئية في هذه الصورة.</p><p class="a" dir="rtl" lang="ar" data-text="البنية الكبد مرئية في صورة CT."></p><div class="ans"><b class="mono">SAYS VISIBLE</b><div class="mtr"><i style="--v:.832"></i></div><em class="mono">83.2%</em></div></div>
+      <div class="ask ask-en ticks"><span class="mono">ENGLISH · SAME IMAGE</span><p class="q">Decide whether the anatomical structure “liver” is visible in this image.</p><p class="a" data-text="The structure liver is not visible in the CT image."></p><div class="ans"><b class="mono">SAYS VISIBLE</b><div class="mtr"><i style="--v:.279"></i></div><em class="mono">27.9%</em></div></div>
+      <div class="split ticks"><svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="32"/><circle class="arc" cx="40" cy="40" r="32"/></svg><div><b class="mono">59.4%</b><span>of identical images get contradicting answers</span></div></div>
+      <div class="hazard mono"><span>ARABIC-SPECIFIC HAZARD</span>An ASCII-only answer parser scored Arabic “visible” at <b>0.2%</b>, not 83.2%.</div>
     </div>
   </div>
 </section>
